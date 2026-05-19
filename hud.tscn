@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dwknlmira5ebf"]
+
+[ext_resource type="Script" uid="uid://cwvndiklw7cj" path="res://hud.gd" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://pivs1c53ycil" path="res://picture/p10.png" id="2_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://c632vgbu6wxg8" path="res://picture/p4.png" id="3_640wx"]
+
+[sub_resource type="Animation" id="Animation_a2258"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, ExtResource("2_8sq4i")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_64ctp"]
+load_path = "res://.godot/imported/p4.png-fedf10228b0d8f0ad905e7298388e8f6.ctex"
+
+[sub_resource type="Animation" id="Animation_1xsix"]
+resource_name = "cross_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.48296815, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_64ctp"), ExtResource("3_640wx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_64ctp"]
+_data = {
+&"RESET": SubResource("Animation_a2258"),
+&"cross_fade": SubResource("Animation_1xsix")
+}
+
+[node name="HUD" type="Control" unique_id=20220364]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_37p78")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1384605353]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1874611376]
+libraries/ = SubResource("AnimationLibrary_64ctp")
+autoplay = &"RESET"
+
+[node name="Background" type="TextureRect" parent="." unique_id=1821378316]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Gamestart" type="Button" parent="." unique_id=1301418641]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Preloadscene" type="TextureRect" parent="." unique_id=552331085]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

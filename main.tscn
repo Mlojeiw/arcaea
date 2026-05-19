@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cqcduqs635a6k"]
+
+[ext_resource type="Script" uid="uid://c4u2d7riu5gne" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dwknlmira5ebf" path="res://hud.tscn" id="2_h2yge"]
+
+[node name="Main" type="Node2D" unique_id=1826976683]
+script = ExtResource("1_0xm2m")
+
+[node name="HUD" parent="." unique_id=20220364 instance=ExtResource("2_h2yge")]
