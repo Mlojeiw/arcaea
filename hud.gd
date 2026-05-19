@@ -54,9 +54,9 @@ func show_hud_scene():
 	show_picture(scene_list[1],4,4,picture_position,Vector2(0,60),1,1,Vector2(1,1))
 	picture_position += INTERVAL
 	show_picture(scene_list[2],6,2,picture_position,Vector2(0,60),1,1,Vector2(1,1))
-	show_logo(scene_list[3],9,Vector2(500,560),Vector2(0,-150),5,3,Vector2(1,1))
-	show_role(scene_list[6],15,Vector2(620,220),Vector2(0,-20),Vector2(610,220),0.1,2,Vector2(1,1))
-	show_role(scene_list[7],15,Vector2(0,100),Vector2(0,20),Vector2(10,100),0.1,1,Vector2(1.2,1.2))
+	show_logo(scene_list[3],9,Vector2(300,560),Vector2(0,-150),5,3,Vector2(1.3,1.3))
+	show_role(scene_list[6],15,Vector2(620,220),Vector2(0,-10),Vector2(610,220),0.1,2,Vector2(1,1))
+	show_role(scene_list[7],15,Vector2(0,100),Vector2(0,10),Vector2(10,100),0.1,1,Vector2(1.2,1.2))
 	show_decolation(scene_list[8],15,Vector2(100,0),0.1,3,Vector2(1.217,1.27),Vector2(1.28,1.28))
 	show_flash(15)
 	
@@ -107,10 +107,9 @@ func show_logo(texture,delay,pos,offest_pos,duration,z_ind,sca):
 	fade_in.tween_property(logo,"modulate",Color(1,1,1,1),duration)
 	await fade_in.finished
 
-
 	var move_affect = create_tween()
 	move_affect.set_ease(Tween.EASE_IN_OUT)
-	move_affect.set_trans(Tween.TRANS_QUAD)
+	move_affect.set_trans(Tween.TRANS_LINEAR)
 	move_affect.set_loops()
 	move_affect.tween_property(logo,"modulate",Color(1,1,1,0.8),2.0)
 	move_affect.tween_property(logo,"modulate",Color(1,1,1,1),2.0)
@@ -152,8 +151,8 @@ func show_ui_scene(scene):
 	background.set_anchor(0,0,0,0)
 	await get_tree().process_frame
 	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_trans(Tween.TRANS_QUAD)
+	#tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(background, "position:y", -700, 16.0)
 	
 func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
@@ -177,13 +176,12 @@ func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
 	var up_pos = pos + move_position
 	var down_pos = pos - move_position
 	var move_affect = create_tween()
-	move_affect.set_ease(Tween.EASE_IN_OUT)
-	move_affect.set_trans(Tween.TRANS_SINE)
+	move_affect.set_trans(Tween.TRANS_LINEAR)
 	
 	move_affect.set_loops()
 	
-	move_affect.tween_property(picture,"position",up_pos,1.0)
-	move_affect.tween_property(picture,"position",down_pos,1.0)
+	move_affect.tween_property(picture,"position",up_pos,1.5)
+	move_affect.tween_property(picture,"position",down_pos,1.5)
 func show_flash(delay):
 	if delay > 0 :
 		await get_tree().create_timer(delay).timeout
