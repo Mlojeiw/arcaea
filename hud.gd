@@ -19,9 +19,8 @@ extends Control
 		preload("res://music/Arcaea_Team - Epilogue.mp3"),
 		preload("res://music/Arcaea_Team - Finale Start.mp3")
 	]
-@onready var font_theme = load("res://Harmonique-Regular.otf")
 var picture_position = Vector2(600,200)
-
+signal ui_scene_finished
 func select_music():
 	var new_music = randi_range(0,0)
 	$AudioStreamPlayer2D.stream = bgm_list[new_music]
@@ -153,8 +152,9 @@ func show_ui_scene(scene):
 	var tween = create_tween()
 	#tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(background, "position:y", -700, 16.0)
-	
+	tween.tween_property(background, "position:y", -600, 15.0)
+	await tween.finished
+	ui_scene_finished.emit()
 func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
 	if delay > 0:
 		await get_tree().create_timer(delay).timeout
@@ -166,8 +166,7 @@ func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
 	picture.z_index = z_ind
 	add_child(picture)
 	var fade_in = create_tween()
-	fade_in.set_ease(Tween.EASE_OUT)
-	fade_in.set_trans(Tween.TRANS_CUBIC)
+	fade_in.set_trans(Tween.TRANS_LINEAR)
 	fade_in.set_parallel(true)
 	fade_in.tween_property(picture,"modulate",Color(1,1,1,1),duration)
 	fade_in.tween_property(picture,"position",pos,duration)
@@ -180,8 +179,8 @@ func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
 	
 	move_affect.set_loops()
 	
-	move_affect.tween_property(picture,"position",up_pos,1.5)
-	move_affect.tween_property(picture,"position",down_pos,1.5)
+	move_affect.tween_property(picture,"position",up_pos,1.0)
+	move_affect.tween_property(picture,"position",down_pos,1.0)
 func show_flash(delay):
 	if delay > 0 :
 		await get_tree().create_timer(delay).timeout
