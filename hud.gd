@@ -58,6 +58,11 @@ func show_hud_scene():
 	show_role(scene_list[6],15,Vector2(620,220),Vector2(0,-20),Vector2(610,220),0.1,2,Vector2(1,1))
 	show_role(scene_list[7],15,Vector2(0,100),Vector2(0,20),Vector2(10,100),0.1,1,Vector2(1.2,1.2))
 	show_decolation(scene_list[8],15,Vector2(100,0),0.1,3,Vector2(1.217,1.27),Vector2(1.28,1.28))
+	show_flash(15)
+	
+	
+	
+	
 func show_picture(texture,delay,stay_time,pos,offest_pos,duration,z_ind,sca):
 	if delay > 0:
 		await get_tree().create_timer(delay).timeout
@@ -179,3 +184,19 @@ func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
 	
 	move_affect.tween_property(picture,"position",up_pos,1.0)
 	move_affect.tween_property(picture,"position",down_pos,1.0)
+func show_flash(delay):
+	if delay > 0 :
+		await get_tree().create_timer(delay).timeout
+	var flash = ColorRect.new()
+	flash.color = Color.WHITE
+	flash.anchor_bottom = 1
+	flash.anchor_right = 1
+	flash.size = Vector2.ZERO
+	flash.modulate = Color(1,1,1,0)
+	flash.z_index = 10
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(flash)
+	var tween = create_tween()
+	tween.tween_property(flash,"modulate",Color(1,1,1,1),0.2)
+	tween.tween_property(flash,"modulate",Color(1,1,1,0),0.1)
+	
