@@ -46,7 +46,7 @@ func _hud_music():
 	$Musicplayer.play()
 func _main_menu_music():
 	if is_transition_music_play :
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.17).timeout
 		$Musicplayer.stream = MAIN_MENU_MUSIC
 		$Musicplayer.play()
 		return 
