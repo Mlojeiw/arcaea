@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c4u2d7riu5gne" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dwknlmira5ebf" path="res://hud.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://brc7g7foo7tdr" path="res://animationtransition.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bcxl4o82fm648" path="res://mainmenu.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=1826976683]
 script = ExtResource("1_0xm2m")
@@ -10,3 +11,7 @@ script = ExtResource("1_0xm2m")
 [node name="HUD" parent="." unique_id=20220364 instance=ExtResource("2_h2yge")]
 
 [node name="Animationtransition" parent="." unique_id=1967790359 instance=ExtResource("3_h2yge")]
+
+[node name="Mainmenu" parent="." unique_id=1427048423 instance=ExtResource("4_1bvp3")]
+
+[node name="Musicplayer" type="AudioStreamPlayer2D" parent="." unique_id=1457830570]

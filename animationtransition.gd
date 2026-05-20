@@ -3,7 +3,8 @@ extends Control
 	load("res://picture/p11.png"),
 	load("res://picture/p12.png"),
 ]
-@onready var transition_music = load("res://music/transition.mp3")
+signal switch_hud_main_menu_scene
+signal transition_start
 var was_used:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 func show_scene():
+	transition_start.emit()
+	
 	var pos_y = -245
 	var left_scene = TextureRect.new()
 	var right_scene = TextureRect.new()
@@ -30,8 +33,7 @@ func show_scene():
 	right_scene.position = Vector2(2070,pos_y)
 	add_child(right_scene)
 	add_child(left_scene)
-	$AudioStreamPlayer2D.stream = transition_music
-	$AudioStreamPlayer2D.play()
+
 	var enter = create_tween()
 	enter.set_ease(Tween.EASE_IN_OUT)
 	enter.set_trans(Tween.TRANS_QUAD)
@@ -41,6 +43,8 @@ func show_scene():
 	enter.tween_property(right_scene,"position",Vector2(1260,pos_y),0.5)
 	await enter.finished
 	await get_tree().create_timer(0.9).timeout
+	switch_hud_main_menu_scene.emit()
+	
 	var end = create_tween()
 	end.set_ease(Tween.EASE_IN_OUT)
 	end.set_trans(Tween.TRANS_LINEAR)
@@ -50,5 +54,6 @@ func show_scene():
 	
 	was_used = true
 	await end.finished
+	
 	left_scene.queue_free()
 	right_scene.queue_free()
