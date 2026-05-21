@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dwknlmira5ebf"]
+
+[ext_resource type="Script" uid="uid://cwvndiklw7cj" path="res://hud/hud.gd" id="1_37p78"]
+
+[node name="HUD" type="Control" unique_id=20220364]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_37p78")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1821378316]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Gamestart" type="Button" parent="." unique_id=1301418641]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Preloadscene" type="TextureRect" parent="." unique_id=552331085]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

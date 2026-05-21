@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cqcduqs635a6k"]
+
+[ext_resource type="Script" uid="uid://c4u2d7riu5gne" path="res://main/main.gd" id="1_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://dwknlmira5ebf" path="res://hud/hud.tscn" id="2_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://brc7g7foo7tdr" path="res://shutter/animation_transition.tscn" id="3_4dugh"]
+[ext_resource type="PackedScene" uid="uid://bcxl4o82fm648" path="res://level_menu/level_menu.tscn" id="4_67ri8"]
+[ext_resource type="PackedScene" uid="uid://cnncy61tg6toj" path="res://main_menu/main_menu.tscn" id="5_grrlh"]
+
+[node name="Main" type="Node2D" unique_id=1826976683]
+script = ExtResource("1_3wy1v")
+
+[node name="HUD" parent="." unique_id=20220364 instance=ExtResource("2_kfbq2")]
+
+[node name="AnimationTransition" parent="." unique_id=1967790359 instance=ExtResource("3_4dugh")]
+
+[node name="LevelMenu" parent="." unique_id=1427048423 instance=ExtResource("4_67ri8")]
+
+[node name="MainMenu" parent="." unique_id=1023750427 instance=ExtResource("5_grrlh")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1457830570]
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=210323686]

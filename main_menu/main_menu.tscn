@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cnncy61tg6toj"]
+
+[ext_resource type="Script" uid="uid://dgv62mypjuhpq" path="res://main_menu/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://djl4et1366f3w" path="res://picture/mainmenu/layout/main_musicplay_pressed.png" id="2_bws42"]
+[ext_resource type="Texture2D" uid="uid://ch0ed82t1jsrq" path="res://picture/mainmenu/layout/main_story_pressed.png" id="3_3f7m4"]
+[ext_resource type="Texture2D" uid="uid://dgqjc2c75cx0i" path="res://picture/mainmenu/layout/main_course_pressed.png" id="4_6tl50"]
+
+[node name="MainMenu" type="Control" unique_id=1023750427]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_06t4h")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1444583912]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Start" type="TextureButton" parent="." unique_id=1277369798]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_pressed = ExtResource("2_bws42")
+
+[node name="Setting" type="TextureButton" parent="." unique_id=194426369]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="World" type="TextureButton" parent="." unique_id=689378185]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Role" type="TextureRect" parent="." unique_id=1414817533]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Story" type="TextureButton" parent="." unique_id=1128061974]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_pressed = ExtResource("3_3f7m4")
+
+[node name="Course" type="TextureButton" parent="." unique_id=56806173]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_pressed = ExtResource("4_6tl50")

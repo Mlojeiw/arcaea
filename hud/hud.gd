@@ -1,19 +1,15 @@
 extends Control
 @onready var INTERVAL = Vector2(0,150)
 @onready var scene_list = [
-	load("res://picture/p1.png"),
-	load("res://picture/p2.png"),
-	load("res://picture/p3.png"),
-	load("res://picture/p4.png"),
-	load("res://picture/p5.png"),
-	load("res://picture/p6.png"),
-	load("res://picture/p7.png"),
-	load("res://picture/p8.png"),
-	load("res://picture/p9.png"),
-	load("res://picture/p10.png"),
-	
+	load("res://picture/hud_message/m1_core.png"),
+	load("res://picture/hud_message/m2_core.png"),
+	load("res://picture/hud_message/m3_core.png"),
+	load("res://picture/hud/logo.png"),
+	load("res://picture/hud/char_h.png"),
+	load("res://picture/hud/char_t.png"),
+	load("res://picture/hud/p9.png")
 ]
-@onready var ui_scene = load("res://picture/ui.jpg")
+@onready var ui_scene = load("res://picture/hud/ui.jpg")
 
 var picture_position = Vector2(600,200)
 signal ui_scene_finished
@@ -25,12 +21,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func load_picture(picture: TextureRect,texture,picture_modulate,pos,picture_scale,picture_z_index):
-	picture.texture = texture
-	picture.modulate = picture_modulate
-	picture.position = picture_position
-	picture.scale = picture_scale
-	picture.z_index = picture_z_index
 func show_hud_scene():
 	hud_scene_start.emit()
 	
@@ -41,10 +31,10 @@ func show_hud_scene():
 	picture_position += INTERVAL
 	show_picture(scene_list[2],6,2,picture_position,Vector2(0,60),1,1,Vector2(1,1))
 	show_logo(scene_list[3],9,Vector2(300,560),Vector2(0,-150),5,3,Vector2(1.3,1.3))
-	show_role(scene_list[6],15,Vector2(620,220),Vector2(0,-10),Vector2(610,220),0.1,2,Vector2(1,1))
-	show_role(scene_list[7],15,Vector2(0,100),Vector2(0,10),Vector2(10,100),0.1,1,Vector2(1.2,1.2))
+	show_role(scene_list[4],15,Vector2(600,230),Vector2(0,-10),Vector2(590,230),0.1,2,Vector2(0.6,0.6))
+	show_role(scene_list[5],15,Vector2(300,100),Vector2(0,10),Vector2(310,100),0.2,1,Vector2(0.6,0.6))
 	
-	show_decolation(scene_list[8],15,Vector2(100,0),0.1,3,Vector2(1.217,1.27),Vector2(1.28,1.28))
+	show_decolation(scene_list[6],15,Vector2(100,-80),0.1,3,Vector2(1.217,1.217),Vector2(1.28,1.28))
 	
 	show_flash(15)
 	
@@ -164,11 +154,11 @@ func show_role(texture,delay,pos,move_position,enter_pos,duration,z_ind,sca):
 	var down_pos = pos - move_position
 	var move_affect = create_tween()
 	move_affect.set_trans(Tween.TRANS_LINEAR)
+	move_affect.set_speed_scale(0.9)
 	
 	move_affect.set_loops()
-	
-	move_affect.tween_property(picture,"position",up_pos,1.0)
-	move_affect.tween_property(picture,"position",down_pos,1.0)
+	move_affect.tween_property(picture,"position",up_pos,1)
+	move_affect.tween_property(picture,"position",down_pos,1)
 func show_flash(delay):
 	if delay > 0 :
 		await get_tree().create_timer(delay).timeout
@@ -176,10 +166,9 @@ func show_flash(delay):
 	flash.color = Color.WHITE
 	flash.anchor_bottom = 1
 	flash.anchor_right = 1
-	flash.size = Vector2.ZERO
 	flash.modulate = Color(1,1,1,0)
 	flash.z_index = 10
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(flash)
 	var tween = create_tween()
 	tween.tween_property(flash,"modulate",Color(1,1,1,1),0.2)
