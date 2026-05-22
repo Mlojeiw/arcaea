@@ -1,11 +1,15 @@
 extends Node2D
-var dir = {
+@onready var dir = {
 	"HUD" : hud_start,
 	"MainMenu" : main_menu_start,
-	"LevelMenu" : level_menu_music,
+	"LevelMenu" : level_menu_start,
+}
+@onready var last_scene_dir = {
+	"MainMenu" : $HUD,
+	"LevelMenu" : $MainMenu,
 }
 var current_scene:Control
-var traget_scene:Control
+
 var hud_ui_finished = false
 #信号
 #资源
@@ -14,53 +18,56 @@ var hud_ui_finished = false
 @onready var SHUTTER_OPEN_MUSIC = preload("res://music/shuttermusic/shutter_open.wav")
 @onready var HUD_MUSIC = [
 		preload("res://music/Arcaea_Team - Arcaea v2.2.0 Title(intro+loop).mp3"),
-	
 		preload("res://music/Arcaea_Team - Epilogue.mp3"),
 		preload("res://music/Arcaea_Team - Finale Start.mp3")
 	] 
 @onready var MAIN_MENU_MUSIC = preload("res://music/Arcaea_Team - Menu BGM v3.0.mp3")
 func _ready() -> void:
 	current_scene = $HUD
-	$HUD.hud_scene_start.connect(hud_start)
-	$HUD.ui_scene_finished.connect(_on_ui_scene_finished)
+	$MainMenu.visible = false
+	$LevelMenu.visible = false
+	hud_start()
 	$AnimationTransition.shutter_close.connect(shutter_close_music)
 	$AnimationTransition.shutter_open.connect(shutter_open_music)
-	$HUD.visible = true
-	$HUD.show_hud_scene()
+	$MainMenu/World.pressed.connect(switch_to.bind($LevelMenu))
+	
 	
 
 func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if event is InputEventMouseButton && hud_ui_finished:
+	if event is InputEventMouseButton && $HUD.ui_roll_end:
 		if event.pressed && $HUD.visible && !$AnimationTransition.was_used:
-			traget_scene = $MainMenu
-			switch_to(traget_scene)
+			switch_to($MainMenu)
+	if Input.is_action_just_pressed("ui_esc") && !$HUD.visible:
+		
+			switch_to(last_scene_dir[current_scene.name])
+		
 #控制转场
-
 func switch_to(traget:Control):
-	if $AnimationTransition.was_used:
+	if $AnimationTransition.was_used :
 		return
 	var traget_name = traget.name
 	$AnimationTransition.show_transition(0.9)
 	await $AnimationTransition.switch_scene
 	current_scene.visible = false
 	current_scene = traget
-	
 	current_scene.visible = true
-	
 	play_scene(traget_name)
 	
 func play_scene(traget:String):
 	dir[traget].call()
 
 func hud_start():
+	if $HUD.is_used:
+		$HUD.reset()	
+	$HUD.show_hud_scene()
 	hud_music()
-
-func _on_ui_scene_finished():
-	hud_ui_finished = true
-
+func level_menu_start():
+	if !$LevelMenu.is_used:
+		$LevelMenu.show_level_menu()
+	level_menu_music()
 func main_menu_start():
 	$MainMenu.show_main_menu()
 	main_menu_music()

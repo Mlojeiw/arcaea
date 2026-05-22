@@ -51,10 +51,10 @@ func show_transition(delay):
 	end.set_ease(Tween.EASE_IN_OUT)
 	end.set_trans(Tween.TRANS_LINEAR)
 	end.set_parallel(true)
-	end.tween_property(left_scene,"position",Vector2(-2500,pos_y),0.5)
-	end.tween_property(right_scene,"position",Vector2(2070,pos_y),0.5)
+	end.tween_property(left_scene,"position",Vector2(-2500,pos_y),0.3)
+	end.tween_property(right_scene,"position",Vector2(2070,pos_y),0.3)
 	
 	await end.finished
-	
+	was_used = false
 	left_scene.queue_free()
 	right_scene.queue_free()

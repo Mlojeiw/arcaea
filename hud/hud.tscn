@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://dwknlmira5ebf"]
 
 [ext_resource type="Script" uid="uid://cwvndiklw7cj" path="res://hud/hud.gd" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://cteo8y3pd3o6l" path="res://picture/hud/char_h.png" id="2_318vg"]
+[ext_resource type="Texture2D" uid="uid://bgx8cabeljxf6" path="res://picture/hud/ui.jpg" id="2_w8tcp"]
+[ext_resource type="Texture2D" uid="uid://cnnhc0yqffenr" path="res://picture/hud/char_t.png" id="3_w8tcp"]
+[ext_resource type="Texture2D" uid="uid://cpmvkkxdel6fc" path="res://picture/hud/title.png" id="5_fjv1a"]
+[ext_resource type="Texture2D" uid="uid://b424xhvt0fgj8" path="res://picture/hud/title_grow.png" id="6_0ivg5"]
 
 [node name="HUD" type="Control" unique_id=20220364]
 layout_mode = 3
@@ -14,8 +19,7 @@ custom_minimum_size = Vector2(0, 500)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-expand_mode = 1
-stretch_mode = 6
+texture = ExtResource("2_w8tcp")
 
 [node name="Gamestart" type="Button" parent="." unique_id=1301418641]
 layout_mode = 0
@@ -26,3 +30,43 @@ offset_bottom = 8.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Hikari" type="TextureRect" parent="." unique_id=1107463623]
+z_index = 2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_318vg")
+
+[node name="Tairitsu" type="TextureRect" parent="." unique_id=1907438786]
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_w8tcp")
+
+[node name="Title" type="Control" parent="." unique_id=2139152002]
+z_index = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="TextureRect" parent="Title" unique_id=1823654646]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_fjv1a")
+
+[node name="title_grow" type="TextureRect" parent="Title" unique_id=736263314]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("6_0ivg5")

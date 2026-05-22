@@ -9,10 +9,6 @@
 [node name="Main" type="Node2D" unique_id=1826976683]
 script = ExtResource("1_3wy1v")
 
-[node name="HUD" parent="." unique_id=20220364 instance=ExtResource("2_kfbq2")]
-
-[node name="AnimationTransition" parent="." unique_id=1967790359 instance=ExtResource("3_4dugh")]
-
 [node name="LevelMenu" parent="." unique_id=1427048423 instance=ExtResource("4_67ri8")]
 
 [node name="MainMenu" parent="." unique_id=1023750427 instance=ExtResource("5_grrlh")]
@@ -20,3 +16,7 @@ script = ExtResource("1_3wy1v")
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1457830570]
 
 [node name="SoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=210323686]
+
+[node name="HUD" parent="." unique_id=20220364 instance=ExtResource("2_kfbq2")]
+
+[node name="AnimationTransition" parent="." unique_id=1967790359 instance=ExtResource("3_4dugh")]

@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dgv62mypjuhpq" path="res://main_menu/main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://djl4et1366f3w" path="res://picture/mainmenu/layout/main_musicplay_pressed.png" id="2_bws42"]
+[ext_resource type="Texture2D" uid="uid://dmruy04ejvlrb" path="res://picture/mainmenu/layout/bg_core.jpg" id="2_t6bnd"]
 [ext_resource type="Texture2D" uid="uid://ch0ed82t1jsrq" path="res://picture/mainmenu/layout/main_story_pressed.png" id="3_3f7m4"]
+[ext_resource type="Texture2D" uid="uid://bgjxvjswjw1or" path="res://picture/mainmenu/layout/main_musicplay.png" id="3_ia84y"]
 [ext_resource type="Texture2D" uid="uid://dgqjc2c75cx0i" path="res://picture/mainmenu/layout/main_course_pressed.png" id="4_6tl50"]
+[ext_resource type="Texture2D" uid="uid://ldmb03bddp5k" path="res://picture/mainmenu/layout/main_story.png" id="5_6at21"]
+[ext_resource type="Texture2D" uid="uid://dtpakoeajrut6" path="res://picture/mainmenu/mainmenuWorld.png" id="5_og6xe"]
+[ext_resource type="Texture2D" uid="uid://bofhc2oakhapg" path="res://picture/mainmenu/world_text.png" id="6_mvfl2"]
 
 [node name="MainMenu" type="Control" unique_id=1023750427]
 layout_mode = 3
@@ -16,12 +21,15 @@ script = ExtResource("1_06t4h")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+texture = ExtResource("2_t6bnd")
 
 [node name="Start" type="TextureButton" parent="." unique_id=1277369798]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("3_ia84y")
 texture_pressed = ExtResource("2_bws42")
+texture_hover = ExtResource("3_ia84y")
 
 [node name="Setting" type="TextureButton" parent="." unique_id=194426369]
 layout_mode = 0
@@ -29,23 +37,43 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="World" type="TextureButton" parent="." unique_id=689378185]
+z_index = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("5_og6xe")
+
+[node name="TextureRect" type="TextureRect" parent="World" unique_id=1226559395]
+z_index = 3
+layout_mode = 0
+offset_left = 80.0
+offset_top = 140.0
+offset_right = 456.0
+offset_bottom = 238.0
+texture = ExtResource("6_mvfl2")
 
 [node name="Role" type="TextureRect" parent="." unique_id=1414817533]
+z_index = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.7, 0.7)
 
 [node name="Story" type="TextureButton" parent="." unique_id=1128061974]
+z_index = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("5_6at21")
 texture_pressed = ExtResource("3_3f7m4")
+texture_hover = ExtResource("5_6at21")
 
 [node name="Course" type="TextureButton" parent="." unique_id=56806173]
+z_index = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("4_6tl50")
 texture_pressed = ExtResource("4_6tl50")
+texture_hover = ExtResource("4_6tl50")
