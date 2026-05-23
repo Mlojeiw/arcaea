@@ -5,7 +5,7 @@ var move_velocity:float = 0
 var is_roll_finished = false
 var last_mouse:Vector2
 var last_pos: Vector2
-var last_time
+var last_time 
 var drag_velocity:Vector2
 var is_dragging :bool
 @onready var background = $Menuscene
@@ -42,7 +42,9 @@ func _input(event):
 		else:
 			is_dragging = false
 			var now_time = Time.get_ticks_msec() / 1000.0
-			var offest_time = now_time - last_time
+			var offest_time
+			if last_time:
+				offest_time = now_time - last_time
 			if offest_time > 0 :
 				drag_velocity = (background.position - last_pos)/offest_time
 				if abs(drag_velocity.y) <200:

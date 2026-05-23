@@ -30,14 +30,12 @@ func _ready() -> void:
 	$AnimationTransition.shutter_close.connect(shutter_close_music)
 	$AnimationTransition.shutter_open.connect(shutter_open_music)
 	$MainMenu/World.pressed.connect(switch_to.bind($LevelMenu))
-	
-	
 
 func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if event is InputEventMouseButton && $HUD.ui_roll_end:
+	if event is InputEventMouseButton && $HUD.ui_roll_end && !$HUD.is_skip :
 		if event.pressed && $HUD.visible && !$AnimationTransition.was_used:
 			switch_to($MainMenu)
 	if Input.is_action_just_pressed("ui_esc") && !$HUD.visible:
@@ -55,7 +53,6 @@ func switch_to(traget:Control):
 	current_scene = traget
 	current_scene.visible = true
 	play_scene(traget_name)
-	
 func play_scene(traget:String):
 	dir[traget].call()
 
@@ -69,6 +66,8 @@ func level_menu_start():
 		$LevelMenu.show_level_menu()
 	level_menu_music()
 func main_menu_start():
+	if $MainMenu.is_used:
+		$MainMenu.reset()
 	$MainMenu.show_main_menu()
 	main_menu_music()
 func level_menu_music():
@@ -91,3 +90,6 @@ func hud_music():
 	$MusicPlayer.stop()
 	$MusicPlayer.stream = HUD_MUSIC[0]
 	$MusicPlayer.play()
+
+func _current_music_skip(pos: float) -> void:
+	$MusicPlayer.seek(pos)

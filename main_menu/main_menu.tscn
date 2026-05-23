@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bgjxvjswjw1or" path="res://picture/mainmenu/layout/main_musicplay.png" id="3_ia84y"]
 [ext_resource type="Texture2D" uid="uid://dgqjc2c75cx0i" path="res://picture/mainmenu/layout/main_course_pressed.png" id="4_6tl50"]
 [ext_resource type="Texture2D" uid="uid://ldmb03bddp5k" path="res://picture/mainmenu/layout/main_story.png" id="5_6at21"]
+[ext_resource type="FontFile" uid="uid://ccd5fcev3dnqk" path="res://Harmonique-Regular.otf" id="5_mvfl2"]
 [ext_resource type="Texture2D" uid="uid://dtpakoeajrut6" path="res://picture/mainmenu/mainmenuWorld.png" id="5_og6xe"]
 [ext_resource type="Texture2D" uid="uid://bofhc2oakhapg" path="res://picture/mainmenu/world_text.png" id="6_mvfl2"]
+[ext_resource type="Texture2D" uid="uid://bmkfcnjo7ewt8" path="res://picture/mainmenu/layout/main_course.png" id="10_mvfl2"]
 
 [node name="MainMenu" type="Control" unique_id=1023750427]
 layout_mode = 3
@@ -31,6 +33,16 @@ texture_normal = ExtResource("3_ia84y")
 texture_pressed = ExtResource("2_bws42")
 texture_hover = ExtResource("3_ia84y")
 
+[node name="Label" type="Label" parent="Start" unique_id=1501765758]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 415.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("5_mvfl2")
+theme_override_font_sizes/font_size = 80
+text = "开始游戏"
+
 [node name="Setting" type="TextureButton" parent="." unique_id=194426369]
 layout_mode = 0
 offset_right = 40.0
@@ -44,13 +56,13 @@ offset_bottom = 40.0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("5_og6xe")
 
-[node name="TextureRect" type="TextureRect" parent="World" unique_id=1226559395]
+[node name="world_text" type="TextureRect" parent="World" unique_id=1226559395]
 z_index = 3
 layout_mode = 0
-offset_left = 80.0
-offset_top = 140.0
-offset_right = 456.0
-offset_bottom = 238.0
+offset_top = 200.0
+offset_right = 376.0
+offset_bottom = 298.0
+scale = Vector2(1.4, 1.4)
 texture = ExtResource("6_mvfl2")
 
 [node name="Role" type="TextureRect" parent="." unique_id=1414817533]
@@ -58,7 +70,6 @@ z_index = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.7, 0.7)
 
 [node name="Story" type="TextureButton" parent="." unique_id=1128061974]
 z_index = 2
@@ -69,11 +80,32 @@ texture_normal = ExtResource("5_6at21")
 texture_pressed = ExtResource("3_3f7m4")
 texture_hover = ExtResource("5_6at21")
 
+[node name="Label" type="Label" parent="Story" unique_id=614625369]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 415.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("5_mvfl2")
+theme_override_font_sizes/font_size = 80
+text = "故事模式"
+
 [node name="Course" type="TextureButton" parent="." unique_id=56806173]
 z_index = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture_normal = ExtResource("4_6tl50")
+texture_normal = ExtResource("10_mvfl2")
 texture_pressed = ExtResource("4_6tl50")
-texture_hover = ExtResource("4_6tl50")
+texture_hover = ExtResource("10_mvfl2")
+
+[node name="Label" type="Label" parent="Course" unique_id=93792368]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 135.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("5_mvfl2")
+theme_override_font_sizes/font_size = 80
+text = "段位挑战
+"
