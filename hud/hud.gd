@@ -8,6 +8,7 @@ var tairitsu_move_effect:Tween
 var glass_grow_move_effect:Tween
 var glass_move_effect:Tween
 signal music_skip(pos:float)
+signal music_start
 @onready var char_t = ShaderMaterial.new()
 @onready var char_h = ShaderMaterial.new()
 @onready var hikari = $Hikari
@@ -40,10 +41,15 @@ func _input(event: InputEvent) -> void:
 			music_skip.emit(15.0)
 			await skip_to_end()
 func show_hud_scene():
-	#$StartAnimation.play("START")
+	$StartAnimation.play("START")
+	await  $StartAnimation.animation_finished
+	$StartAnimation.play("FADE_IN")
+	await $StartAnimation.animation_finished
 	is_used = true
+	
+	
+	music_start.emit()
 	$BackgroundAnimation.play("background")
-	#await get_tree().create_timer(1).timeout
 	$MessageInput.play("message")
 	$TitleAnimation.play("title")
 	$HikariAnimation.play("hikari")

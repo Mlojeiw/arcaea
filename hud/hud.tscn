@@ -176,7 +176,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_lfqsj"]
 resource_name = "move_effect"
-length = 2.0
+length = 3.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -185,7 +185,7 @@ tracks/0/path = NodePath("Title/title_grow:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 1.5, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0)]
@@ -197,7 +197,7 @@ tracks/1/path = NodePath("Title/title_grow:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 1.5, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1.31, 1.31), Vector2(1.35, 1.31), Vector2(1.31, 1.31)]
@@ -591,6 +591,34 @@ _data = {
 &"message": SubResource("Animation_0bw3r")
 }
 
+[sub_resource type="Animation" id="Animation_ci6th"]
+resource_name = "FADE_IN"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("startwreath:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("starticon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_lyvac"]
 length = 0.001
 tracks/0/type = "value"
@@ -603,7 +631,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5)]
+"values": [Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -629,10 +657,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("startwreath:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
 
 [sub_resource type="Animation" id="Animation_02s75"]
 resource_name = "START"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -640,10 +680,10 @@ tracks/0/path = NodePath("starticon:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1, 1.5),
+"times": PackedFloat32Array(0.7, 1, 1.3333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.1, 0.5), Vector2(0.5, 0.5)]
+"values": [Vector2(0.6, 0.6), Vector2(0.001, 0.6), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -652,10 +692,10 @@ tracks/1/path = NodePath("starticon:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -672,6 +712,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ci6th"]
 _data = {
+&"FADE_IN": SubResource("Animation_ci6th"),
 &"RESET": SubResource("Animation_lyvac"),
 &"START": SubResource("Animation_02s75")
 }
@@ -833,22 +874,22 @@ libraries/ = SubResource("AnimationLibrary_ci6th")
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
 layout_mode = 0
-offset_left = 772.0
-offset_top = 417.0
-offset_right = 1517.0
-offset_bottom = 993.0
-scale = Vector2(0.5, 0.5)
+offset_left = 715.0
+offset_top = 385.00003
+offset_right = 1460.0
+offset_bottom = 961.0
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("12_mq7b8")
 
 [node name="starticon" type="TextureRect" parent="." unique_id=635634868]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
 layout_mode = 0
-offset_left = 691.0
-offset_top = 228.0
-offset_right = 1219.0
-offset_bottom = 757.0
-scale = Vector2(0.5, 0.5)
+offset_left = 666.00006
+offset_top = 203.0
+offset_right = 1194.0
+offset_bottom = 732.0
+scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(264, 264.5)
 texture = ExtResource("11_hwufu")
 

@@ -21,4 +21,6 @@ script = ExtResource("1_3wy1v")
 
 [node name="AnimationTransition" parent="." unique_id=1967790359 instance=ExtResource("3_4dugh")]
 
+[connection signal="music_start" from="MainMenu" to="." method="main_menu_music"]
 [connection signal="music_skip" from="HUD" to="." method="_current_music_skip"]
+[connection signal="music_start" from="HUD" to="." method="hud_music"]
