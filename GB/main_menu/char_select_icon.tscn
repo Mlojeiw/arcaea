@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cpeps75srckhq"]
+
+[ext_resource type="Script" uid="uid://cxyne5a72qca5" path="res://GB/main_menu/char_select_icon.gd" id="1_76gtu"]
+[ext_resource type="Texture2D" uid="uid://ojxop08mg6j2" path="res://picture/mainmenu/layout/char_icon_border_white-selected.png" id="1_njesj"]
+[ext_resource type="Texture2D" uid="uid://c0hlbtb33grjr" path="res://picture/character/charicon/0_icon.png" id="2_i5rb1"]
+[ext_resource type="Texture2D" uid="uid://7vevp2ws4juh" path="res://picture/mainmenu/layout/character_selected.png" id="3_76gtu"]
+[ext_resource type="FontFile" uid="uid://ccd5fcev3dnqk" path="res://font/Harmonique-Regular.otf" id="5_kfsk4"]
+
+[node name="CharSelectIcon" type="Control" unique_id=1499965687]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = 199.0
+offset_bottom = 199.0
+script = ExtResource("1_76gtu")
+
+[node name="select" type="TextureRect" parent="." unique_id=1865272747]
+z_index = 5
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("3_76gtu")
+
+[node name="was_selected" type="TextureRect" parent="." unique_id=992258391]
+z_index = 7
+layout_mode = 0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 198.0
+offset_bottom = 198.0
+mouse_filter = 2
+texture = ExtResource("1_njesj")
+
+[node name="Label" type="Label" parent="." unique_id=1839354204]
+z_index = 6
+layout_mode = 0
+offset_left = -115.0
+offset_top = 122.0
+offset_right = 13.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("5_kfsk4")
+theme_override_font_sizes/font_size = 50
+text = "Hikari"
+
+[node name="charicon" type="TextureButton" parent="." unique_id=1958611244]
+z_index = 6
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 170.0
+scale = Vector2(1.13, 1.13)
+texture_normal = ExtResource("2_i5rb1")

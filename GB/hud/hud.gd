@@ -25,8 +25,8 @@ signal music_start
 @onready var message3 = $Message3
 func _ready() -> void:
 	
-	char_t.shader = preload("res://hud/char_t_offset.gdshader")
-	char_h.shader = preload("res://hud/char_h_offset.gdshader")
+	char_t.shader = preload("res://GB/hud/char_t_offset.gdshader")
+	char_h.shader = preload("res://GB/hud/char_h_offset.gdshader")
 	hikari.material = char_h
 	tairitsu.material = char_t
 	char_h.set_shader_parameter("offset",Vector2.ZERO)

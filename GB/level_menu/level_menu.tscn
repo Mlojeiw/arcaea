@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcxl4o82fm648"]
 
-[ext_resource type="Script" uid="uid://dt7ujsfp7blts" path="res://level_menu/level_menu.gd" id="1_cmhrf"]
+[ext_resource type="Script" uid="uid://dt7ujsfp7blts" path="res://GB/level_menu/level_menu.gd" id="1_cmhrf"]
 
 [node name="Levelmenu" type="Control" unique_id=1427048423]
 layout_mode = 3

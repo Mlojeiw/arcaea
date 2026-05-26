@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brc7g7foo7tdr"]
 
-[ext_resource type="Script" uid="uid://yasvb4tvtaqt" path="res://shutter/animation_transition.gd" id="1_g223b"]
+[ext_resource type="Script" uid="uid://yasvb4tvtaqt" path="res://GB/shutter/animation_transition.gd" id="1_g223b"]
 
 [node name="Animationtransition" type="Control" unique_id=1967790359]
 layout_mode = 3

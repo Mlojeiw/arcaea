@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cqcduqs635a6k"]
 
-[ext_resource type="Script" uid="uid://c4u2d7riu5gne" path="res://main/main.gd" id="1_3wy1v"]
-[ext_resource type="PackedScene" uid="uid://dwknlmira5ebf" path="res://hud/hud.tscn" id="2_kfbq2"]
-[ext_resource type="PackedScene" uid="uid://brc7g7foo7tdr" path="res://shutter/animation_transition.tscn" id="3_4dugh"]
-[ext_resource type="PackedScene" uid="uid://bcxl4o82fm648" path="res://level_menu/level_menu.tscn" id="4_67ri8"]
-[ext_resource type="PackedScene" uid="uid://cnncy61tg6toj" path="res://main_menu/main_menu.tscn" id="5_grrlh"]
+[ext_resource type="Script" uid="uid://c4u2d7riu5gne" path="res://GB/main/main.gd" id="1_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://dwknlmira5ebf" path="res://GB/hud/hud.tscn" id="2_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://brc7g7foo7tdr" path="res://GB/shutter/animation_transition.tscn" id="3_4dugh"]
+[ext_resource type="PackedScene" uid="uid://bcxl4o82fm648" path="res://GB/level_menu/level_menu.tscn" id="4_67ri8"]
+[ext_resource type="PackedScene" uid="uid://cnncy61tg6toj" path="res://GB/main_menu/main_menu.tscn" id="5_grrlh"]
 
 [node name="Main" type="Node2D" unique_id=1826976683]
 script = ExtResource("1_3wy1v")

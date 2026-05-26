@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cnncy61tg6toj"]
 
-[ext_resource type="Script" uid="uid://dgv62mypjuhpq" path="res://main_menu/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dgv62mypjuhpq" path="res://GB/main_menu/main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://djl4et1366f3w" path="res://picture/mainmenu/layout/main_musicplay_pressed.png" id="2_bws42"]
-[ext_resource type="Shader" uid="uid://0wr2xojbjw56" path="res://main_menu/background.gdshader" id="2_qvn4f"]
+[ext_resource type="Shader" uid="uid://0wr2xojbjw56" path="res://GB/main_menu/background.gdshader" id="2_qvn4f"]
 [ext_resource type="Texture2D" uid="uid://dmruy04ejvlrb" path="res://picture/mainmenu/layout/bg_core.jpg" id="2_t6bnd"]
 [ext_resource type="Texture2D" uid="uid://ch0ed82t1jsrq" path="res://picture/mainmenu/layout/main_story_pressed.png" id="3_3f7m4"]
 [ext_resource type="Texture2D" uid="uid://bgjxvjswjw1or" path="res://picture/mainmenu/layout/main_musicplay.png" id="3_ia84y"]
 [ext_resource type="Texture2D" uid="uid://dgqjc2c75cx0i" path="res://picture/mainmenu/layout/main_course_pressed.png" id="4_6tl50"]
 [ext_resource type="Texture2D" uid="uid://ldmb03bddp5k" path="res://picture/mainmenu/layout/main_story.png" id="5_6at21"]
-[ext_resource type="FontFile" uid="uid://ccd5fcev3dnqk" path="res://Harmonique-Regular.otf" id="5_mvfl2"]
+[ext_resource type="FontFile" uid="uid://ccd5fcev3dnqk" path="res://font/Harmonique-Regular.otf" id="5_mvfl2"]
 [ext_resource type="Texture2D" uid="uid://bofhc2oakhapg" path="res://picture/mainmenu/layout/world_text.png" id="6_mvfl2"]
 [ext_resource type="Texture2D" uid="uid://bvcweqjtl6r2o" path="res://picture/mainmenu/layout/top_button_settings.png" id="7_qq33v"]
 [ext_resource type="Texture2D" uid="uid://bnajvrmvs6t08" path="res://picture/mainmenu/layout/world.png" id="7_vj6np"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://2eht4fon0rj4" path="res://picture/mainmenu/layout/main_more_pressed.png" id="14_vj6np"]
 [ext_resource type="Texture2D" uid="uid://bm6rakax6sypd" path="res://picture/mainmenu/layout/main_network.png" id="15_iri28"]
 [ext_resource type="Texture2D" uid="uid://c3s0frpeima8i" path="res://picture/mainmenu/layout/main_network_pressed.png" id="16_qq33v"]
+[ext_resource type="FontFile" uid="uid://kphsx8wqmpcm" path="res://font/Exo-SemiBold.ttf" id="22_l18n7"]
 [ext_resource type="Texture2D" uid="uid://cyxuxvgr8tiks" path="res://picture/mainmenu/layout/top_bar_bg.png" id="22_ombju"]
 [ext_resource type="Texture2D" uid="uid://121lri3xayul" path="res://picture/character/charicon/0o_icon.png" id="22_ru8rc"]
 [ext_resource type="Texture2D" uid="uid://ga4hqpi4jn1i" path="res://picture/mainmenu/layout/purple_chara_underlay.png" id="23_rectb"]
@@ -30,6 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://c8dibjqlgiu6" path="res://picture/mainmenu/layout/arrow_pressed.png" id="27_7vuvo"]
 [ext_resource type="Texture2D" uid="uid://bln7r5bn0y08q" path="res://picture/mainmenu/layout/stats_bg.png" id="29_nd3u2"]
 [ext_resource type="Texture2D" uid="uid://m474n8l2y748" path="res://picture/mainmenu/layout/stats_bg_pressed.png" id="30_l18n7"]
+[ext_resource type="Script" uid="uid://c0hip2iulpoud" path="res://GB/main_menu/user_char_list.gd" id="32_conbw"]
+[ext_resource type="Texture2D" uid="uid://dw2rdfn6c3x32" path="res://picture/mainmenu/layout/partner-art-swap.png" id="33_ghawi"]
+[ext_resource type="Texture2D" uid="uid://be5t4na20hqag" path="res://picture/mainmenu/layout/partner-art-swap-pressed.png" id="34_5j864"]
 
 [sub_resource type="Animation" id="Animation_kwfav"]
 resource_name = "BUTTON_MOVE"
@@ -326,6 +330,42 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CharSelect/Character:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, -4), Vector2(-30, -4)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CharSelect/PartnerArtSwap:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CharSelect/PartnerArtSwap:mouse_filter")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
 
 [sub_resource type="Animation" id="Animation_rectb"]
 resource_name = "CHAE_SELECT_OUT"
@@ -436,6 +476,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(840, 70), Vector2(740, 70)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CharSelect/PartnerArtSwap:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CharSelect/PartnerArtSwap:mouse_filter")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_ru8rc"]
@@ -560,6 +624,42 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(780, 70)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CharSelect/Character:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CharSelect/PartnerArtSwap:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CharSelect/PartnerArtSwap:mouse_filter")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xayta"]
 _data = {
@@ -589,7 +689,7 @@ z_index = 3
 layout_mode = 0
 offset_left = 240.0
 offset_top = 800.0
-offset_right = 621.00006
+offset_right = 621.0
 offset_bottom = 974.0
 texture_normal = ExtResource("15_iri28")
 texture_pressed = ExtResource("16_qq33v")
@@ -626,14 +726,13 @@ text = "开始游戏"
 modulate = Color(1, 1, 1, 0.8)
 z_index = 3
 layout_mode = 0
-offset_right = 542.9695
+offset_right = 542.9697
 offset_bottom = 545.0
 scale = Vector2(0.99, 0.99)
 texture_normal = ExtResource("7_vj6np")
 texture_pressed = ExtResource("8_iri28")
 
 [node name="world_text" type="TextureRect" parent="Menu/World" unique_id=1226559395]
-z_index = 3
 layout_mode = 0
 offset_left = -50.50505
 offset_top = 153.53535
@@ -647,7 +746,7 @@ z_index = 1
 layout_mode = 0
 offset_left = 780.0
 offset_top = 70.0
-offset_right = 2580.0417
+offset_right = 2580.0454
 offset_bottom = 1870.0
 mouse_filter = 2
 
@@ -662,7 +761,6 @@ texture_pressed = ExtResource("3_3f7m4")
 texture_hover = ExtResource("5_6at21")
 
 [node name="Label" type="Label" parent="Menu/Story" unique_id=614625369]
-z_index = 3
 layout_mode = 0
 offset_left = 95.0
 offset_top = 10.0
@@ -699,7 +797,7 @@ z_index = 3
 layout_mode = 0
 offset_left = 582.0
 offset_top = 804.0
-offset_right = 988.0001
+offset_right = 988.0002
 offset_bottom = 978.0
 texture_normal = ExtResource("13_tr6y3")
 texture_pressed = ExtResource("14_vj6np")
@@ -727,15 +825,14 @@ texture = ExtResource("22_ombju")
 modulate = Color(1, 1, 1, 0.89411765)
 z_index = 3
 layout_mode = 0
-offset_left = 1200.0
-offset_right = 1348.0
+offset_left = 1151.0
+offset_right = 1299.0
 offset_bottom = 75.0
 texture_normal = ExtResource("7_qq33v")
 texture_pressed = ExtResource("8_ie3af")
 
 [node name="TextureRect" type="TextureRect" parent="Menu/Top/Setting" unique_id=1215415030]
 self_modulate = Color(1, 1, 1, 0.5803922)
-z_index = 2
 layout_mode = 0
 offset_left = 53.0
 offset_top = 21.0
@@ -744,29 +841,28 @@ offset_bottom = 61.0
 mouse_filter = 2
 texture = ExtResource("9_7f1p5")
 
-[node name="Label" type="Label" parent="Menu/Top/Setting/TextureRect" unique_id=1031529571]
+[node name="Label" type="Label" parent="Menu/Top/Setting" unique_id=1031529571]
 self_modulate = Color(1, 1, 1, 0.77254903)
-z_index = 3
 layout_mode = 0
-offset_left = -12.0
-offset_top = -3.0
-offset_right = 69.0
-offset_bottom = 54.0
-theme_override_fonts/font = ExtResource("5_mvfl2")
+offset_left = 41.0
+offset_top = 21.0
+offset_right = 122.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("22_l18n7")
 theme_override_font_sizes/font_size = 30
 text = "设定"
 
 [node name="CharIconContainer" type="Control" parent="Menu/Top" unique_id=1041213626]
 layout_mode = 1
 anchor_bottom = 0.019000001
-offset_left = 128.0
+offset_left = 109.0
 offset_top = -45.0
-offset_right = 168.0
+offset_right = 149.0
 offset_bottom = -25.519997
 mouse_filter = 2
 
 [node name="icon" type="TextureRect" parent="Menu/Top/CharIconContainer" unique_id=1631964206]
-z_index = 5
+z_index = 4
 layout_mode = 0
 offset_left = 850.0
 offset_top = 12.0
@@ -776,7 +872,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("22_ru8rc")
 
 [node name="iconwreath" type="TextureButton" parent="Menu/Top/CharIconContainer" unique_id=156211873]
-z_index = 4
+z_index = 3
 layout_mode = 0
 offset_left = 815.0
 offset_top = -21.0
@@ -794,13 +890,13 @@ offset_bottom = 40.0
 
 [node name="background" type="ColorRect" parent="CharSelect" unique_id=1083616557]
 modulate = Color(1, 1, 1, 0)
-z_index = 6
+z_index = 5
 layout_mode = 0
 offset_left = 600.0
-offset_right = 2520.003
+offset_right = 2520.0076
 offset_bottom = 1080.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.3764706)
+color = Color(0, 0, 0, 0.57254905)
 
 [node name="Exit" type="TextureButton" parent="CharSelect" unique_id=1667609410]
 modulate = Color(1, 1, 1, 0)
@@ -817,10 +913,10 @@ texture_pressed = ExtResource("25_bphs3")
 modulate = Color(1, 1, 1, 0)
 z_index = 7
 layout_mode = 0
-offset_left = 120.0
-offset_top = 720.0
-offset_right = 302.0
-offset_bottom = 950.0
+offset_left = 70.0
+offset_top = 670.0
+offset_right = 252.0
+offset_bottom = 900.0
 texture_normal = ExtResource("26_cda7c")
 texture_pressed = ExtResource("27_7vuvo")
 
@@ -829,9 +925,9 @@ modulate = Color(1, 1, 1, 0)
 z_index = 7
 layout_mode = 0
 offset_left = 1100.0
-offset_top = 720.0
+offset_top = 670.0
 offset_right = 1282.0
-offset_bottom = 950.0
+offset_bottom = 900.0
 texture_normal = ExtResource("26_cda7c")
 texture_pressed = ExtResource("27_7vuvo")
 flip_h = true
@@ -840,9 +936,8 @@ flip_h = true
 modulate = Color(1, 1, 1, 0)
 z_index = 6
 layout_mode = 0
-offset_left = -1.0
 offset_top = -4.0
-offset_right = 1799.0
+offset_right = 1800.0
 offset_bottom = 1796.0
 mouse_filter = 2
 texture = ExtResource("12_ie3af")
@@ -859,13 +954,31 @@ scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("29_nd3u2")
 texture_pressed = ExtResource("30_l18n7")
 
-[node name="UserCharList" type="Control" parent="CharSelect" unique_id=46525536]
+[node name="UserCharList" type="Control" parent="CharSelect" unique_id=1810107352]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1319.0
+offset_top = 3.0
+offset_right = 1919.0
+offset_bottom = 1083.0
+script = ExtResource("32_conbw")
+
+[node name="PartnerArtSwap" type="TextureButton" parent="CharSelect" unique_id=628416974]
+modulate = Color(1, 1, 1, 0)
+z_index = 8
+layout_mode = 0
+offset_left = 323.0
+offset_top = 860.0
+offset_right = 442.0
+offset_bottom = 980.0
+mouse_filter = 2
+texture_normal = ExtResource("33_ghawi")
+texture_pressed = ExtResource("34_5j864")
 
 [node name="CharSelectAnimation" type="AnimationPlayer" parent="." unique_id=693548184]
 libraries/ = SubResource("AnimationLibrary_xayta")
 
 [connection signal="pressed" from="Menu/Top/CharIconContainer/iconwreath" to="." method="_on_iconwreath_pressed"]
 [connection signal="pressed" from="CharSelect/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CharSelect/RightArrow" to="." method="_on_right_arrow_pressed"]
+[connection signal="pressed" from="CharSelect/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="CharSelect/PartnerArtSwap" to="." method="_on_partner_art_swap_pressed"]

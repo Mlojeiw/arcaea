@@ -104,8 +104,7 @@ func signal_connect():
 	$MainMenu/Menu/Top/Setting.pressed.connect(item_click_music)
 	$MainMenu/CharSelect/Exit.pressed.connect(item_cancel_music)
 	$MainMenu/CharSelect/LeftArrow.pressed.connect(item_click_music)
-	$MainMenu/CharSelect/RightArrow.pressed.connect(item_cancel_music)
-	$MainMenu/CharSelect/State.pressed.connect(item_click_music)
+	$MainMenu/CharSelect/RightArrow.pressed.connect(item_click_music)
 	
-	
+	$MainMenu/CharSelect/PartnerArtSwap.pressed.connect(item_click_music)
 	
