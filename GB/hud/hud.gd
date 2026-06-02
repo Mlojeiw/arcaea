@@ -32,8 +32,7 @@ func _ready() -> void:
 	char_h.set_shader_parameter("offset",Vector2.ZERO)
 	char_t.set_shader_parameter("offset",Vector2.ZERO)
 	set_anchors_preset(Control.PRESET_FULL_RECT)
-func _process(delta: float) -> void:
-	pass
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.double_click && ! ui_roll_end && !is_skip && is_used:

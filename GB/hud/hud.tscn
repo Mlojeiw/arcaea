@@ -680,7 +680,7 @@ tracks/0/path = NodePath("starticon:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.7, 1, 1.3333334),
+"times": PackedFloat32Array(0.76666665, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.6, 0.6), Vector2(0.001, 0.6), Vector2(0.6, 0.6)]
@@ -874,9 +874,9 @@ libraries/ = SubResource("AnimationLibrary_ci6th")
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
 layout_mode = 0
-offset_left = 715.0
+offset_left = 742.00006
 offset_top = 385.00003
-offset_right = 1460.0
+offset_right = 1487.0
 offset_bottom = 961.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("12_mq7b8")
@@ -885,9 +885,9 @@ texture = ExtResource("12_mq7b8")
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
 layout_mode = 0
-offset_left = 666.00006
+offset_left = 696.0
 offset_top = 203.0
-offset_right = 1194.0
+offset_right = 1224.0
 offset_bottom = 732.0
 scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(264, 264.5)

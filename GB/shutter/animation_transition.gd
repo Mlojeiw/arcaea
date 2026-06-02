@@ -7,14 +7,8 @@ signal switch_scene
 signal shutter_close
 signal shutter_open
 var was_used:bool = false
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
 func show_transition(delay):
 	was_used = true
 	
