@@ -9,14 +9,47 @@
 [ext_resource type="FontFile" uid="uid://kphsx8wqmpcm" path="res://font/Exo-SemiBold.ttf" id="6_w2g46"]
 [ext_resource type="Texture2D" uid="uid://121lri3xayul" path="res://picture/character/charicon/0o_icon.png" id="7_a3541"]
 [ext_resource type="Texture2D" uid="uid://ga4hqpi4jn1i" path="res://picture/mainmenu/layout/purple_chara_underlay.png" id="8_fhnml"]
-[ext_resource type="Script" uid="uid://bkq4eyi0u7d1b" path="res://GB/song_select/song_list.gd" id="13_t7sme"]
+[ext_resource type="Texture2D" uid="uid://cn4yumrt7eu1y" path="res://picture/song_select/arcaea.png" id="13_k4ndf"]
+[ext_resource type="FontFile" uid="uid://fifyr3at1be8" path="res://font/NotoSansCJKsc-Regular.otf" id="13_tv5ob"]
+[ext_resource type="Texture2D" uid="uid://bbj8gw3nrgq52" path="res://picture/song_select/sale_bg.png" id="14_w2g46"]
+[ext_resource type="PackedScene" uid="uid://cv06bfrxlikax" path="res://GB/song_select/songlist.tscn" id="19_tv5ob"]
 [ext_resource type="Texture2D" uid="uid://bworekjyx4pi" path="res://picture/song_select/song_score_tab-byd.png" id="20_3gmov"]
 [ext_resource type="FontFile" uid="uid://djkehv715mvkl" path="res://font/Exo-Regular.ttf" id="21_dktl7"]
 [ext_resource type="PackedScene" uid="uid://c0inh1vlttss3" path="res://GB/char_select/char_select.tscn" id="26_n1adm"]
-[ext_resource type="PackedScene" uid="uid://b3ugiqnxlufia" path="res://difficulty_control.tscn" id="28_kp5cg"]
+[ext_resource type="PackedScene" uid="uid://b3ugiqnxlufia" path="res://GB/difficulty_control/difficulty_control.tscn" id="28_kp5cg"]
 [ext_resource type="Texture2D" uid="uid://cu157uiwbrb7o" path="res://picture/song_select/song_jacket_back_light.png" id="32_botvs"]
 [ext_resource type="Texture2D" uid="uid://drjlaq74q4fqq" path="res://picture/songicon/testify.jpg" id="33_5lvwp"]
 [ext_resource type="Texture2D" uid="uid://bxd7l24uboeho" path="res://picture/song_select/bg_select_dark.jpg" id="35_7q0aa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_im1y2"]
+font = ExtResource("13_tv5ob")
+font_size = 40
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.41960785)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_im1y2"]
+texture = ExtResource("14_w2g46")
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3you"]
+font = ExtResource("13_tv5ob")
+font_size = 70
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_offset = Vector2(3, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w2g46"]
+font = ExtResource("13_tv5ob")
+font_size = 30
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.2627451)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a3541"]
+font = ExtResource("13_tv5ob")
+font_size = 30
+outline_color = Color(0, 0, 0, 0.32941177)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.29411766)
 
 [sub_resource type="Animation" id="Animation_botvs"]
 resource_name = "AWAIT"
@@ -73,17 +106,71 @@ _data = {
 &"SongContainer": SubResource("Animation_chw25")
 }
 
+[sub_resource type="Animation" id="Animation_im1y2"]
+resource_name = "IN"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top/Information:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top/Information:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 337), Vector2(4, 337)]
+}
+
+[sub_resource type="Animation" id="Animation_l3you"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top/Information:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top/Information:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 337)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2g46"]
+_data = {
+&"IN": SubResource("Animation_im1y2"),
+&"RESET": SubResource("Animation_l3you")
+}
+
 [node name="SongSelect" type="Control" unique_id=1553143650]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_aky2r")
-
-[node name="Light" type="TextureRect" parent="." unique_id=1048045455]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1440.0
-mouse_filter = 2
-texture = ExtResource("1_k4ndf")
 
 [node name="Top" type="TextureRect" parent="." unique_id=974055168]
 z_index = 10
@@ -166,25 +253,105 @@ texture = ExtResource("20_3gmov")
 [node name="Label" type="Label" parent="Top/ScoreTab" unique_id=129646601]
 z_index = 3
 layout_mode = 0
-offset_left = 37.0
-offset_top = 122.0
-offset_right = 478.0
-offset_bottom = 232.0
+offset_left = 21.0
+offset_top = 151.0
+offset_right = 242.0
+offset_bottom = 206.0
 theme_override_fonts/font = ExtResource("21_dktl7")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 40
 text = "00'000'000"
+
+[node name="TextureRect" type="TextureRect" parent="Top/ScoreTab" unique_id=1931851921]
+z_index = 4
+custom_minimum_size = Vector2(229, 111)
+layout_mode = 0
+offset_left = 384.99994
+offset_top = 148.0
+offset_right = 584.99994
+offset_bottom = 278.0
+scale = Vector2(0.4, 0.4)
+expand_mode = 1
 
 [node name="DifficultyControl" parent="Top" unique_id=76601691 instance=ExtResource("28_kp5cg")]
 layout_mode = 0
+offset_left = -32.0
+offset_right = -32.0
 
-[node name="SongList" type="Control" parent="." unique_id=266810658]
+[node name="Arcaea" type="TextureRect" parent="Top" unique_id=2092961716]
+layout_mode = 0
+offset_left = 1.0000012
+offset_right = 5981.0
+offset_bottom = 2398.0
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("13_k4ndf")
+
+[node name="Information" type="Control" parent="Top" unique_id=1545402818]
 anchors_preset = 0
-offset_left = 1371.0
-offset_top = 84.0
-offset_right = 2058.0
-offset_bottom = 1279.0
-mouse_filter = 1
-script = ExtResource("13_t7sme")
+offset_left = 4.0
+offset_top = 337.0
+offset_right = 4.0
+offset_bottom = 337.0
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="Top/Information" unique_id=865911065]
+z_index = 2
+layout_mode = 0
+offset_left = 27.0
+offset_top = 50.0
+offset_right = 373.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("21_dktl7")
+theme_override_font_sizes/font_size = 50
+text = "dfddffafd erwq"
+label_settings = SubResource("LabelSettings_im1y2")
+
+[node name="Control" type="Control" parent="Top/Information" unique_id=1709971929]
+anchors_preset = 0
+offset_left = 23.0
+offset_top = -66.0
+offset_right = 63.0
+offset_bottom = -26.0
+
+[node name="TextureRect" type="PanelContainer" parent="Top/Information/Control" unique_id=974472834]
+self_modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 0
+offset_top = 15.0
+offset_right = 293.0
+offset_bottom = 134.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_im1y2")
+
+[node name="Label" type="Label" parent="Top/Information/Control/TextureRect" unique_id=1842736355]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_tv5ob")
+theme_override_font_sizes/font_size = 80
+label_settings = SubResource("LabelSettings_l3you")
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Top/Information" unique_id=1613380083]
+anchors_preset = 0
+offset_left = 29.0
+offset_top = 116.0
+offset_right = 69.0
+offset_bottom = 156.0
+
+[node name="Label3" type="Label" parent="Top/Information/Control2" unique_id=1296678470]
+layout_mode = 0
+offset_left = 98.0
+offset_right = 285.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("13_tv5ob")
+theme_override_font_sizes/font_size = 40
+text = "fdfsffwf"
+label_settings = SubResource("LabelSettings_w2g46")
+
+[node name="Label" type="Label" parent="Top/Information/Control2" unique_id=429074150]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("13_tv5ob")
+theme_override_font_sizes/font_size = 40
+text = "BPM:"
+label_settings = SubResource("LabelSettings_a3541")
 
 [node name="SongContainer" type="TextureButton" parent="." unique_id=2119728616]
 z_index = 1
@@ -227,16 +394,39 @@ texture = ExtResource("33_5lvwp")
 libraries/ = SubResource("AnimationLibrary_tqh6r")
 next/SongContainer = &"AWAIT"
 
-[node name="Dark" type="TextureRect" parent="." unique_id=784846221]
-z_index = -1
+[node name="CharSelect" parent="." unique_id=532534669 instance=ExtResource("26_n1adm")]
 layout_mode = 0
+offset_left = 4.0
+offset_top = -7.0
+offset_right = 4.0
+offset_bottom = -7.0
+
+[node name="SongList" parent="." unique_id=12216436 instance=ExtResource("19_tv5ob")]
+layout_mode = 0
+
+[node name="BG" type="Control" parent="." unique_id=790501294]
+z_index = -1
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Dark" type="TextureRect" parent="BG" unique_id=784846221]
+z_index = -1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1440.0
 mouse_filter = 2
 texture = ExtResource("35_7q0aa")
 
-[node name="CharSelect" parent="." unique_id=532534669 instance=ExtResource("26_n1adm")]
+[node name="Light" type="TextureRect" parent="BG" unique_id=1048045455]
 layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1440.0
+mouse_filter = 2
+texture = ExtResource("1_k4ndf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1777359543]
+libraries/ = SubResource("AnimationLibrary_w2g46")
 
 [connection signal="pressed" from="Top/CharIconContainer/iconwreath" to="." method="_on_icon_pressed"]
 [connection signal="pressed" from="SongContainer" to="." method="_on_song_container_pressed"]

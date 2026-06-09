@@ -49,7 +49,7 @@ func anim_out():
 	tween.tween_property(char_name,"modulate",Color(1,1,1,0),0.2)
 func anim_selecting():
 	self.position = init_pos
-	select.position =   Vector2(-6,-6) 
+	select.position = Vector2(-6,-6) 
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)

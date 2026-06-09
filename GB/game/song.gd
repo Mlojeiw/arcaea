@@ -2,7 +2,7 @@ class_name Song extends Resource
 
 @export var name: String
 @export var song_author: String
-@export var bpm: float
+@export var bpm: float = 0
 @export var icon: Resource
 @export var id: int
 @export var difficulty: Array[String]
@@ -11,7 +11,15 @@ class_name Song extends Resource
 func get_diff_number(diff:String):
 	if diff in difficulty:
 		return diff_chart[diff].diff[diff]
-func add_chart(song:Resource,notelist:Array[Note],bpmlist:Array[float],diff:Dictionary,score:String):
+func add_chart(
+	song:Resource,
+	notelist:Array[Note],
+	bpmlist:Array[float],
+	diff:Dictionary,
+	score:String,
+	grade:String,
+	clear_type:String,
+	):
 	if not diff.keys()[0] in difficulty:
 		difficulty.append(diff.keys()[0]) 
 	var new = ChartData.new()
@@ -20,4 +28,6 @@ func add_chart(song:Resource,notelist:Array[Note],bpmlist:Array[float],diff:Dict
 	new.bpm = bpmlist
 	new.song = song
 	new.score = score
+	new.grade = grade
+	new.clear_type = clear_type
 	diff_chart[diff.keys()[0]] = new

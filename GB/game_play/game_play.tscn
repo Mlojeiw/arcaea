@@ -1,0 +1,420 @@
+[gd_scene format=3 uid="uid://dben5w3k5fbvp"]
+
+[ext_resource type="Script" uid="uid://cp0pwsg2dgduw" path="res://GB/game_play/game_play.gd" id="1_mm4cs"]
+[ext_resource type="AudioStream" uid="uid://gvn28dc52h82" path="res://music/song/arcahv.ogg" id="2_pjxwy"]
+[ext_resource type="Texture2D" uid="uid://busp11jdktrbn" path="res://picture/game/ingame/uileft.png" id="3_arqo0"]
+[ext_resource type="Texture2D" uid="uid://duscknh7qmhnb" path="res://picture/game/ingame/uileft_pressed.png" id="4_ev011"]
+[ext_resource type="Texture2D" uid="uid://c6ke2dgq1mfj7" path="res://picture/game/track/track_light.png" id="5_pjxwy"]
+[ext_resource type="Texture2D" uid="uid://c763c3ct8grbv" path="res://picture/game/track/track.png" id="7_0yi8a"]
+[ext_resource type="Texture2D" uid="uid://bl8mulfur015o" path="res://picture/game/track/judge_line.png" id="7_8cob2"]
+[ext_resource type="Script" uid="uid://boo4ipjyrseav" path="res://GB/game_play/track.gd" id="7_8le6o"]
+[ext_resource type="Texture2D" uid="uid://csi1ix4r0kpr5" path="res://picture/game/note/note.png" id="7_dijif"]
+[ext_resource type="Texture2D" uid="uid://mp1fn4tu83i2" path="res://picture/game/track/track_lane_divider.png" id="9_8cob2"]
+[ext_resource type="Texture2D" uid="uid://dv1dy1ogqkj1b" path="res://picture/game/bg/aegleseeker.jpg" id="9_8le6o"]
+[ext_resource type="Texture2D" uid="uid://nbrbvuw3yy3a" path="res://picture/game/ingame/hp/hp_base.png" id="12_rsuea"]
+[ext_resource type="Texture2D" uid="uid://c573t4ysrgf2n" path="res://picture/game/ingame/hp/hp_bar.png" id="13_k4dsc"]
+[ext_resource type="Texture2D" uid="uid://wy13aqxgdsbf" path="res://picture/game/ingame/hp/hp_grid.png" id="14_8pmhe"]
+[ext_resource type="Texture2D" uid="uid://bxs0aycnorodd" path="res://picture/game/ingame/uiright.png" id="15_8pmhe"]
+[ext_resource type="FontFile" uid="uid://djkehv715mvkl" path="res://font/Exo-Regular.ttf" id="16_dijif"]
+
+[node name="GamePlay" type="Control" unique_id=1678093758]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mm4cs")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=228750686]
+stream = ExtResource("2_pjxwy")
+parameters/looping = true
+
+[node name="Container" type="Control" parent="." unique_id=1426811763]
+anchors_preset = 0
+offset_top = -129.0
+offset_right = 40.0
+offset_bottom = -89.0
+metadata/_edit_lock_ = true
+
+[node name="TrackRoot" type="Control" parent="Container" unique_id=2121622294]
+anchors_preset = 0
+offset_top = 60.0
+offset_right = 1920.0
+offset_bottom = 1084.0
+script = ExtResource("7_8le6o")
+
+[node name="TextureRect" type="TextureRect" parent="Container/TrackRoot" unique_id=2105226051]
+z_index = 2
+texture_filter = 4
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1151.0
+
+[node name="SubViewport" type="SubViewport" parent="Container/TrackRoot" unique_id=439306790]
+transparent_bg = true
+size = Vector2i(1920, 1024)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="Container/TrackRoot/SubViewport" unique_id=1670949023]
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="Container/TrackRoot/SubViewport/Node3D" unique_id=1510053537]
+transform = Transform3D(1, 0, 0, 0, 0.55667263, -0.830732, 0, 0.830732, 0.55667263, 0, -20, 4.1)
+fov = 71.9
+
+[node name="Container" type="Node3D" parent="Container/TrackRoot/SubViewport/Node3D" unique_id=980938854]
+metadata/_edit_lock_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1786873910]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -17.5, 0.01)
+layers = 16
+pixel_size = 0.1
+alpha_antialiasing_mode = 2
+texture = ExtResource("7_8cob2")
+region_enabled = true
+region_rect = Rect2(0, 0, 950.91394, 34.957184)
+metadata/_edit_lock_ = true
+
+[node name="Body" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=2000522581]
+texture = ExtResource("5_pjxwy")
+metadata/_edit_lock_ = true
+
+[node name="Divider1" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=921195329]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, -2.4, -20, 0.1)
+centered = false
+texture = ExtResource("9_8cob2")
+metadata/_edit_lock_ = true
+
+[node name="Divider2" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=537359617]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, -0.06, -20, 0.1)
+centered = false
+texture = ExtResource("9_8cob2")
+metadata/_edit_lock_ = true
+
+[node name="Divider3" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1330632433]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, 2.28, -20, 0.1)
+centered = false
+texture = ExtResource("9_8cob2")
+metadata/_edit_lock_ = true
+
+[node name="Notes" type="Node3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1698520006]
+
+[node name="Sprite3D" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container/Notes" unique_id=311580222]
+transform = Transform3D(0.699985, 0.012518626, -0.0013130772, -0.004379558, 1.9999586, 0.0010469289, 0.0013196031, -0.0029676894, 0.69999796, 0.95, -4.460691, 0.8)
+visible = false
+texture = ExtResource("7_dijif")
+
+[node name="Otexture" type="SubViewport" parent="Container/TrackRoot" unique_id=1260134852]
+transparent_bg = true
+size = Vector2i(1024, 3840)
+render_target_update_mode = 4
+
+[node name="body1" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1426754735]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_right = 512.0
+offset_bottom = 256.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body2" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1863947718]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("7_0yi8a")
+
+[node name="body3" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=654338730]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 512.0
+offset_right = 512.0
+offset_bottom = 768.0
+texture = ExtResource("7_0yi8a")
+
+[node name="body4" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=631888793]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 768.0
+offset_right = 512.0
+offset_bottom = 1024.0
+texture = ExtResource("7_0yi8a")
+
+[node name="body5" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=424737657]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 1024.0
+offset_right = 512.0
+offset_bottom = 1280.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body6" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1829618763]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 1280.0
+offset_right = 512.0
+offset_bottom = 1536.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body7" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1262445914]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 1792.0
+offset_right = 512.0
+offset_bottom = 2048.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body8" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=654327489]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 2048.0
+offset_right = 512.0
+offset_bottom = 2304.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body9" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1606873605]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 1536.0
+offset_right = 512.0
+offset_bottom = 1792.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body10" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=461489521]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 2304.0
+offset_right = 512.0
+offset_bottom = 2560.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body11" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=62398178]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 2560.0
+offset_right = 512.0
+offset_bottom = 2816.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body12" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=171653109]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 2816.0
+offset_right = 512.0
+offset_bottom = 3072.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body13" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1025121807]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 3072.0
+offset_right = 512.0
+offset_bottom = 3328.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body14" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=668203708]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 3328.0
+offset_right = 512.0
+offset_bottom = 3584.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="body15" type="TextureRect" parent="Container/TrackRoot/Otexture" unique_id=1192911545]
+texture_repeat = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 3584.0
+offset_right = 512.0
+offset_bottom = 3840.0
+texture = ExtResource("7_0yi8a")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="Container" unique_id=321481700]
+layout_mode = 0
+offset_top = -42.0
+offset_right = 1920.0
+offset_bottom = 1398.0
+texture = ExtResource("9_8le6o")
+metadata/_edit_lock_ = true
+
+[node name="Pause" type="Control" parent="Container" unique_id=1458813814]
+anchors_preset = 0
+offset_top = 129.0
+offset_right = 40.0
+offset_bottom = 169.0
+
+[node name="TextureRect" type="TextureButton" parent="Container/Pause" unique_id=967085797]
+layout_mode = 0
+offset_left = -101.0
+offset_top = 50.0
+offset_right = 255.0
+offset_bottom = 190.0
+scale = Vector2(1.1, 1.1)
+texture_normal = ExtResource("3_arqo0")
+texture_pressed = ExtResource("4_ev011")
+
+[node name="HPcontainer" type="Control" parent="Container" unique_id=1707983304]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HP" type="TextureRect" parent="Container/HPcontainer" unique_id=1812652850]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 130.0
+offset_right = 118.0
+offset_bottom = 647.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("12_rsuea")
+
+[node name="ColorRect" type="ColorRect" parent="Container/HPcontainer/HP" unique_id=1209326104]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+layout_mode = 0
+offset_left = 7.8571463
+offset_right = 47.857143
+offset_bottom = 487.14282
+
+[node name="Bar" type="TextureRect" parent="Container/HPcontainer/HP/ColorRect" unique_id=773870626]
+z_index = 2
+layout_mode = 0
+offset_top = 488.0
+offset_right = 40.0
+offset_bottom = 975.0
+texture = ExtResource("13_k4dsc")
+
+[node name="Grid" type="TextureRect" parent="Container/HPcontainer" unique_id=102298158]
+z_index = 1
+layout_mode = 0
+offset_left = 59.000004
+offset_top = 131.0
+offset_right = 99.0
+offset_bottom = 617.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("14_8pmhe")
+
+[node name="Top" type="Polygon2D" parent="Container/HPcontainer" unique_id=1848563484]
+position = Vector2(336, 156)
+color = Color(1, 1, 1, 0.9760001)
+polygon = PackedVector2Array(-277, -26, -277, 155, -248, 179, -221, 151, -221, -26)
+uv = PackedVector2Array(-270, -20, -272, 50, -244, 69, -218, 48, -225, -24)
+
+[node name="Score" type="Control" parent="Container" unique_id=1535825745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1365.0
+offset_top = 154.0
+offset_right = 1355.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Container/Score" unique_id=492262000]
+z_index = 3
+layout_mode = 0
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 604.0
+offset_bottom = 313.0
+texture = ExtResource("15_8pmhe")
+
+[node name="ColorRect" type="ColorRect" parent="Container/Score/TextureRect" unique_id=1857954582]
+clip_contents = true
+layout_mode = 0
+offset_left = 97.0
+offset_top = 171.0
+offset_right = 228.0
+offset_bottom = 302.0
+
+[node name="TextureRect" type="TextureRect" parent="Container/Score/TextureRect/ColorRect" unique_id=1970282456]
+layout_mode = 0
+offset_right = 324.99976
+offset_bottom = 322.5
+scale = Vector2(0.4, 0.4)
+
+[node name="Name" type="Label" parent="Container/Score/TextureRect" unique_id=1551730876]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 193.0
+offset_right = 375.0
+offset_bottom = 235.0
+theme_override_fonts/font = ExtResource("16_dijif")
+theme_override_font_sizes/font_size = 30
+text = "inkari-us"
+
+[node name="Authour" type="Label" parent="Container/Score/TextureRect" unique_id=657106104]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 237.0
+offset_right = 375.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("16_dijif")
+theme_override_font_sizes/font_size = 30
+text = "inkari-us"
+
+[node name="Label" type="Label" parent="Container/Score" unique_id=219588196]
+z_index = 5
+layout_mode = 0
+offset_left = 104.0
+offset_top = 31.0
+offset_right = 516.0
+offset_bottom = 139.0
+theme_override_fonts/font = ExtResource("16_dijif")
+theme_override_font_sizes/font_size = 80
+text = "00000000"

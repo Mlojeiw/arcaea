@@ -19,6 +19,18 @@ var hud_ui_finished = false
 	preload("res://music/preview/testfiy.ogg"),
 	preload("res://music/preview/sheriruthrmx.ogg"),
 	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
+	preload("res://music/preview/arcahv.ogg"),
 ]
 @onready var  LEVEL_MENU_MUSIC = preload("res://music/world/Arcaea_Team - World BGM v3.0.mp3")
 @onready var SHUTTER_CLOSE_MUSIC = preload("res://music/shuttermusic/shutter_close.wav")
@@ -43,21 +55,19 @@ func _input(event):
 	if event is InputEventMouseButton && $HUD.ui_roll_end && !$HUD.is_skip :
 		if event.pressed && $HUD.visible && !$AnimationTransition.was_used:
 			switch_to($MainMenu)
-	if Input.is_action_just_pressed("ui_esc") && !$HUD.visible:
-		
+	if Input.is_action_just_pressed("ui_esc") && current_scene != $MainMenu:
 			switch_to(last_scene_dir[current_scene.name])
 		
 #控制转场
 func switch_to(traget:Control):
 	if $AnimationTransition.was_used :
 		return
-	$AnimationTransition.show_transition(0.9)
+	$AnimationTransition.show_transition(traget)
 	await $AnimationTransition.switch_scene
 	current_scene.visible = false
 	current_scene = traget
 	current_scene.visible = true
 	dir[traget.name].call()
-	
 func hud_start():
 	if $HUD.is_used:
 		$HUD.reset()	
@@ -127,4 +137,5 @@ func signal_connect():
 	$SongSelect/CharSelect/LeftArrow.pressed.connect(item_click_music)
 	$SongSelect/CharSelect/RightArrow.pressed.connect(item_click_music)
 	$SongSelect/CharSelect/PartnerArtSwap.pressed.connect(item_click_music)
+	$SongSelect/Top/DifficultyControl._on_button_pressed.connect(item_click_music)
 	UserData.song_switch.connect(song_select_music)

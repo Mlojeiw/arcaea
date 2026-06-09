@@ -9,7 +9,7 @@ signal shutter_open
 var was_used:bool = false
 func _ready() -> void:
 	pass
-func show_transition(delay):
+func show_transition(delay:Control):
 	was_used = true
 	
 	var pos_y = -245
@@ -21,7 +21,6 @@ func show_transition(delay):
 	right_scene.scale = Vector2(1.6,1.6)
 	left_scene.z_index = 10
 	right_scene.z_index = 10
-	
 	left_scene.modulate = Color(1,1,1,1)
 	right_scene.modulate = Color(1,1,1,1)
 	left_scene.position = Vector2(-2500,pos_y)
@@ -29,25 +28,23 @@ func show_transition(delay):
 	add_child(right_scene)
 	add_child(left_scene)
 	shutter_close.emit()
-
 	var enter = create_tween()
-	enter.set_ease(Tween.EASE_IN_OUT)
+	enter.set_ease(Tween.EASE_OUT)
 	enter.set_trans(Tween.TRANS_QUAD)
 	enter.set_parallel(true)
-	
-	enter.tween_property(left_scene,"position",Vector2(-105,pos_y),0.5)
-	enter.tween_property(right_scene,"position",Vector2(1260,pos_y),0.5)
+	enter.tween_property(left_scene,"position",Vector2(-105,pos_y),0.6)
+	enter.tween_property(right_scene,"position",Vector2(1260,pos_y),0.6)
 	await enter.finished
-	await get_tree().create_timer(delay).timeout
 	switch_scene.emit()
+	await delay.set_finished
+	await get_tree().create_timer(0.6).timeout
 	shutter_open.emit()
 	var end = create_tween()
 	end.set_ease(Tween.EASE_IN_OUT)
 	end.set_trans(Tween.TRANS_LINEAR)
 	end.set_parallel(true)
-	end.tween_property(left_scene,"position",Vector2(-2500,pos_y),0.3)
-	end.tween_property(right_scene,"position",Vector2(2070,pos_y),0.3)
-	
+	end.tween_property(left_scene,"position",Vector2(-2500,pos_y),0.5)
+	end.tween_property(right_scene,"position",Vector2(2070,pos_y),0.5)
 	await end.finished
 	was_used = false
 	left_scene.queue_free()

@@ -4,13 +4,16 @@ class_name SongCard extends Control
 @onready var select = $WasSelect
 @onready var corner1 = $Corner/Corner1
 @onready var corner2 = $Corner/Corner2
-@onready var effect = $Effect
 @onready var corner_diff = $Corner/Corner1/diff
 @onready var bg = $Body/Container/BG
 @onready var start = $Body/Start
 @onready var song_name = $Body/Container/Label
 @onready var anim = $AnimationPlayer
+@onready var bg_grade = $bg/Rank1
+@onready var bg_clear_type = $bg/Rank2
+#@onready var effect = $Body/TextureButton
 var was_selected: bool = false
+var tween:Tween
 var id: int
 var diff_number: Dictionary = {
 }
@@ -34,13 +37,32 @@ var dir = {
 	"Dark":load("res://picture/song_select/song_cell_corner_dark.png"),
 	
 }
+var grade = {
+	"ex" = load("res://picture/grade/ex.png"),
+	"exp" = load("res://picture/grade/explus.png"),
+	"a" = load("res://picture/grade/a.png"),
+	"aa" = load("res://picture/grade/aa.png"),
+	"b" = load("res://picture/grade/b.png"),
+	"c" = load("res://picture/grade/c.png"),
+	"d" = load("res://picture/grade/d.png"),
+}
+var clear_type = {
+	"easy":load("res://picture/clear_type/easy.png"),
+	"fail":load("res://picture/clear_type/fail.png"),
+	"full":load("res://picture/clear_type/full.png"),
+	"normal":load("res://picture/clear_type/normal.png"),
+	"hard":load("res://picture/clear_type/hard.png"),
+	
+	"pure":load("res://picture/clear_type/pure.png"),
+}
 var icon
-var tween : Tween
-var init_pos
+var init_pos 
 var color:String
+var s:Song
 func _ready() -> void:
 	signal_connect()
 func setup(song: Song):
+	s = song
 	id = song.id
 	icon = song.icon
 	song_name.text = song.name
@@ -49,6 +71,7 @@ func setup(song: Song):
 	songicon.texture = song.icon
 	corner2.texture = dir[song.color]
 	corner1.texture = corner1_res[UserData.difficulty]
+	set_rank()
 	for x in difficulty:
 		if song.diff_chart.has(x):
 			diff_number[x] = song.get_diff_number(x)
@@ -69,22 +92,17 @@ func setup(song: Song):
 		self.visible = true
 		corner_diff.text = diff_number[UserData.difficulty]
 func _on_body_pressed() -> void:
-	if tween:
-		tween.kill()
 	UserData.set_song_id(id)
 func _on_song_switch(song:Song):
-	position = init_pos
 	if UserData.song_id == id:
 		start.visible = true
 		was_selected = true
 		select.visible = true
 		bg.visible = true
-		tween = create_tween()
-		position  = init_pos + Vector2(60,0)
-		tween.set_parallel(true)
-		tween.tween_property(self,"position",init_pos,0.3)
-		tween.tween_property(select,"modulate",Color(1,1,1,1),0.3)
 		anim.play("START")
+		tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(select,"modulate",Color(1,1,1,1),0.3)
 	else:
 		start.visible = false
 		was_selected = false
@@ -95,22 +113,30 @@ func _on_song_switch(song:Song):
 func get_container_size():
 	return $Body.size
 func _on_diff_switch():
-	if  UserData.difficulty not in difficulty:
-		self.visible = false
+	self.visible = false
 	if UserData.difficulty in difficulty:
 		self.visible = true
 		corner_diff.text = diff_number[UserData.difficulty]
 		corner1.texture = corner1_res[UserData.difficulty]
-		anim_in()
-func anim_in():
-	tween = create_tween()
-	position  = init_pos + Vector2(60,0)
-	tween.set_parallel(true)
-	tween.tween_property(self,"position",init_pos,0.3)
-	tween.tween_property(select,"modulate",Color(1,1,1,1),0.3)
+	set_rank()
+func kill_tween():
+	if tween:
+		tween.kill()
+		tween = null
 func set_pos(pos):
 	self.position = pos
-	init_pos = pos
+	init_pos = pos 
+func set_rank():
+	if UserData.difficulty in difficulty:
+		var chart = s.diff_chart[UserData.difficulty] as ChartData
+		if chart.grade != "":
+			bg_grade.texture = grade[chart.grade]
+		else:
+			bg_grade.texture = null
+		if chart.clear_type != "":
+			bg_clear_type.texture = clear_type[chart.clear_type]
+		else:
+			bg_clear_type.texture = null
 func signal_connect():
 	UserData.song_switch.connect(_on_song_switch)
 	UserData.difficulty_switch.connect(_on_diff_switch)

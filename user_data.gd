@@ -18,7 +18,6 @@ var char_list: Array[Char] = []
 const  CONFIG_PATH = "user://user_data.cfg"
 func _ready() -> void:
 	_load()
-
 func _save():
 	var config = ConfigFile.new()
 	config.set_value("user","current_char_id",current_char_id)
@@ -84,16 +83,49 @@ func _load():
 		testify.icon = load("res://picture/songicon/testify.jpg")
 		testify.color = "Light"
 		testify.difficulty = ["past","future"] as Array[String]
+		testify.bpm = 207
 		song_list.append(testify)
 		var id = add_song("sheriruthrmx",["future"],200,"Grimoire of Darkness",load("res://picture/songicon/sheriruthrmx.jpg"),"Dark")
-		song_list[id].add_chart(preload("res://music/song/Arcaea_Team - Sheriruth.mp3"),note,bp,{"future":"10"},"00'000'000")
-		testify.add_chart(preload("res://music/song/Arcaea_Team - Testify -Official Music Video-.mp3"),note,bp,{"past":"8+"},"00'000'000")
-		testify.add_chart(preload("res://music/song/Arcaea_Team - Testify -Official Music Video-.mp3"),note,bp,{"future":"11"},"98'898'056")
-		testify.add_chart(preload("res://music/song/Arcaea_Team - Testify -Official Music Video-.mp3"),note,bp,{"present":"9+"},"96'800'0577")
+		song_list[id].add_chart(preload("res://music/song/Arcaea_Team - Sheriruth.mp3"),note,bp,{"future":"10"},"00'000'000","","")
+		testify.add_chart(preload("res://music/song/Arcaea_Team - Testify -Official Music Video-.mp3"),note,bp,{"past":"8+"},"00'000'000","","")
+		testify.add_chart(preload("res://music/song/Arcaea_Team - Testify -Official Music Video-.mp3"),note,bp,{"future":"11"},"98'898'056","ex","hard")
+		testify.add_chart(preload("res://music/song/Arcaea_Team - Testify -Official Music Video-.mp3"),note,bp,{"present":"9+"},"96'800'057","aa","normal")
 		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
-		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000")
-		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000")
-		
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
+		id = add_song("archav",[],198,"Feryquitous",load("res://picture/songicon/arcahv.jpg"),"Light")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"future":"9+"},"00'000'000","","")
+		song_list[id].add_chart(preload("res://music/song/arcahv.ogg"),note,bp,{"past":"6"},"90'000'000","ex","easy")
 	var config = ConfigFile.new()
 	if config.load(CONFIG_PATH) != OK:
 		self.current_char_id = 0
@@ -135,3 +167,6 @@ func add_song(name:String,diff:Array[String],bpm:float,authour:String,icon:Resou
 	song_list.append(new)
 	_save()
 	return new.id
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save()

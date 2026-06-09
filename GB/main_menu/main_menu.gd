@@ -14,14 +14,15 @@ var background_tween : Tween
 var is_used = false
 var is_anim = false
 signal music_start
+signal set_finished
 func _ready() -> void:
 	singal_connect()
 	setup()
-
 func show_main_menu():
 	if is_used:
 		return
 	is_used = true
+	call_deferred("emit_signal", "set_finished")
 	music_start.emit()
 	show_main_menu_background()
 	$MenuAnimation.play("BUTTON_MOVE")
@@ -55,6 +56,7 @@ func setup():
 	var data = UserData.char_list[UserData.current_char_id]
 	role.texture = data.texture[data.default]
 	charicon.texture = data.icon[data.default]
+	
 func _on_iconwreath_pressed() -> void:
 	if is_anim:
 		return

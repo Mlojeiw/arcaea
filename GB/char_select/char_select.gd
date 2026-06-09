@@ -3,6 +3,7 @@ extends Control
 var offset_vec = Vector2(80,0)# 80 80
 var select_position = Vector2(200,0)#init pos
 var total_h = 0
+var tween:Tween
 const CHARSELECTICON = preload("res://GB/char_select/char_select_icon.tscn")
 @onready var charlist = $UserCharList
 signal exit
@@ -23,7 +24,9 @@ func _update(char:Char):
 	character.texture = char.texture[char.default]
 	character.position = Vector2(60,-4)
 	character.modulate = Color(1,1,1,0)
-	var tween = create_tween()
+	if tween:
+		tween.kill()
+	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_parallel(true)
@@ -50,7 +53,6 @@ func anim_out():
 	$Anim.play("OUT")
 	for child: CharIcon in charlist.get_children():
 		child.anim_out()
-
 func _on_left_arrow_pressed() -> void:
 	UserData.set_current_char_id(UserData.current_char_id + 1)
 func _on_right_arrow_pressed() -> void:
@@ -63,8 +65,6 @@ func _on_exit_pressed() -> void:
 	for x: CharIcon in charlist.get_children():
 		x.reset()
 	exit.emit()
-	visible = false
-	
 func signal_connect():
 	UserData.char_switch.connect(_update)
 	for x in UserData.char_list:

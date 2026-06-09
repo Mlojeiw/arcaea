@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cyxuxvgr8tiks" path="res://picture/mainmenu/layout/top_bar_bg.png" id="22_ombju"]
 [ext_resource type="Texture2D" uid="uid://121lri3xayul" path="res://picture/character/charicon/0o_icon.png" id="22_ru8rc"]
 [ext_resource type="Texture2D" uid="uid://ga4hqpi4jn1i" path="res://picture/mainmenu/layout/purple_chara_underlay.png" id="23_rectb"]
+[ext_resource type="Texture2D" uid="uid://cn4yumrt7eu1y" path="res://picture/song_select/arcaea.png" id="25_d14yg"]
 [ext_resource type="PackedScene" uid="uid://c0inh1vlttss3" path="res://GB/char_select/char_select.tscn" id="36_803we"]
 
 [sub_resource type="Animation" id="Animation_kwfav"]
@@ -312,7 +313,7 @@ modulate = Color(1, 1, 1, 0.8)
 z_index = 3
 layout_mode = 0
 offset_right = 445.4547
-offset_bottom = 438.38376
+offset_bottom = 438.3838
 scale = Vector2(0.99, 0.99)
 texture_normal = ExtResource("7_vj6np")
 texture_pressed = ExtResource("8_iri28")
@@ -467,6 +468,14 @@ offset_bottom = 179.0
 scale = Vector2(1.03, 1.03)
 texture_normal = ExtResource("23_rectb")
 texture_pressed = ExtResource("23_rectb")
+
+[node name="Arcaea" type="TextureRect" parent="Menu/Top" unique_id=1109851057]
+layout_mode = 0
+offset_top = -2.9999995
+offset_right = 789.0
+offset_bottom = 313.0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("25_d14yg")
 
 [node name="NetWork" type="TextureButton" parent="Menu" unique_id=755560911]
 modulate = Color(1, 1, 1, 0.8)
