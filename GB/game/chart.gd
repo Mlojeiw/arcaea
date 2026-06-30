@@ -9,7 +9,7 @@ var grade_texture = {
 	"c" = load("res://picture/grade/c.png"),
 	"d" = load("res://picture/grade/d.png"),
 }
-@export var score:String 
+@export var score: int = 00000000
 @export var song: Resource
 @export var noteList: Array[Note]
 @export var bpm: Array[float]

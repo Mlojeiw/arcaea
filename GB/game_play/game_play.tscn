@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c763c3ct8grbv" path="res://picture/game/track/track.png" id="7_0yi8a"]
 [ext_resource type="Texture2D" uid="uid://bl8mulfur015o" path="res://picture/game/track/judge_line.png" id="7_8cob2"]
 [ext_resource type="Script" uid="uid://boo4ipjyrseav" path="res://GB/game_play/track.gd" id="7_8le6o"]
-[ext_resource type="Texture2D" uid="uid://csi1ix4r0kpr5" path="res://picture/game/note/note.png" id="7_dijif"]
+[ext_resource type="Texture2D" uid="uid://jrtyh1qs7il2" path="res://picture/game/track/lane_gradient.png" id="7_qo7lg"]
+[ext_resource type="Script" uid="uid://casaxhyxqudyr" path="res://GB/game_play/effect/effect.gd" id="8_c1nfr"]
 [ext_resource type="Texture2D" uid="uid://mp1fn4tu83i2" path="res://picture/game/track/track_lane_divider.png" id="9_8cob2"]
 [ext_resource type="Texture2D" uid="uid://dv1dy1ogqkj1b" path="res://picture/game/bg/aegleseeker.jpg" id="9_8le6o"]
 [ext_resource type="Texture2D" uid="uid://nbrbvuw3yy3a" path="res://picture/game/ingame/hp/hp_base.png" id="12_rsuea"]
@@ -16,15 +17,16 @@
 [ext_resource type="Texture2D" uid="uid://wy13aqxgdsbf" path="res://picture/game/ingame/hp/hp_grid.png" id="14_8pmhe"]
 [ext_resource type="Texture2D" uid="uid://bxs0aycnorodd" path="res://picture/game/ingame/uiright.png" id="15_8pmhe"]
 [ext_resource type="FontFile" uid="uid://djkehv715mvkl" path="res://font/Exo-Regular.ttf" id="16_dijif"]
+[ext_resource type="PackedScene" uid="uid://bcdowtw7aqpbi" path="res://GB/game_play/effect/hit.tscn" id="17_g6bku"]
+[ext_resource type="Script" uid="uid://60up7g1yfipc" path="res://GB/game_play/effect/hit.gd" id="18_qo7lg"]
+[ext_resource type="Texture2D" uid="uid://d1q2mebyaleik" path="res://picture/game/hit/hit_pure.png" id="19_iqur7"]
+[ext_resource type="Script" uid="uid://b3rfa3x08s1sa" path="res://GB/game_play/effect/hit_effect.gd" id="20_cqr8i"]
+[ext_resource type="AudioStream" uid="uid://basodv1k14re7" path="res://music/effect/tap.wav" id="20_t265e"]
 
 [node name="GamePlay" type="Control" unique_id=1678093758]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_mm4cs")
-
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=228750686]
-stream = ExtResource("2_pjxwy")
-parameters/looping = true
 
 [node name="Container" type="Control" parent="." unique_id=1426811763]
 anchors_preset = 0
@@ -39,68 +41,6 @@ offset_top = 60.0
 offset_right = 1920.0
 offset_bottom = 1084.0
 script = ExtResource("7_8le6o")
-
-[node name="TextureRect" type="TextureRect" parent="Container/TrackRoot" unique_id=2105226051]
-z_index = 2
-texture_filter = 4
-layout_mode = 0
-offset_top = 1.0
-offset_right = 1920.0
-offset_bottom = 1151.0
-
-[node name="SubViewport" type="SubViewport" parent="Container/TrackRoot" unique_id=439306790]
-transparent_bg = true
-size = Vector2i(1920, 1024)
-render_target_update_mode = 4
-
-[node name="Node3D" type="Node3D" parent="Container/TrackRoot/SubViewport" unique_id=1670949023]
-metadata/_edit_lock_ = true
-
-[node name="Camera3D" type="Camera3D" parent="Container/TrackRoot/SubViewport/Node3D" unique_id=1510053537]
-transform = Transform3D(1, 0, 0, 0, 0.55667263, -0.830732, 0, 0.830732, 0.55667263, 0, -20, 4.1)
-fov = 71.9
-
-[node name="Container" type="Node3D" parent="Container/TrackRoot/SubViewport/Node3D" unique_id=980938854]
-metadata/_edit_lock_ = true
-
-[node name="Sprite3D" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1786873910]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -17.5, 0.01)
-layers = 16
-pixel_size = 0.1
-alpha_antialiasing_mode = 2
-texture = ExtResource("7_8cob2")
-region_enabled = true
-region_rect = Rect2(0, 0, 950.91394, 34.957184)
-metadata/_edit_lock_ = true
-
-[node name="Body" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=2000522581]
-texture = ExtResource("5_pjxwy")
-metadata/_edit_lock_ = true
-
-[node name="Divider1" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=921195329]
-transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, -2.4, -20, 0.1)
-centered = false
-texture = ExtResource("9_8cob2")
-metadata/_edit_lock_ = true
-
-[node name="Divider2" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=537359617]
-transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, -0.06, -20, 0.1)
-centered = false
-texture = ExtResource("9_8cob2")
-metadata/_edit_lock_ = true
-
-[node name="Divider3" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1330632433]
-transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, 2.28, -20, 0.1)
-centered = false
-texture = ExtResource("9_8cob2")
-metadata/_edit_lock_ = true
-
-[node name="Notes" type="Node3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1698520006]
-
-[node name="Sprite3D" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container/Notes" unique_id=311580222]
-transform = Transform3D(0.699985, 0.012518626, -0.0013130772, -0.004379558, 1.9999586, 0.0010469289, 0.0013196031, -0.0029676894, 0.69999796, 0.95, -4.460691, 0.8)
-visible = false
-texture = ExtResource("7_dijif")
 
 [node name="Otexture" type="SubViewport" parent="Container/TrackRoot" unique_id=1260134852]
 transparent_bg = true
@@ -283,6 +223,102 @@ offset_bottom = 3840.0
 texture = ExtResource("7_0yi8a")
 metadata/_edit_use_anchors_ = true
 
+[node name="SubViewport" type="SubViewport" parent="Container/TrackRoot" unique_id=439306790]
+transparent_bg = true
+msaa_2d = 2
+msaa_3d = 2
+size = Vector2i(1920, 1024)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="Container/TrackRoot/SubViewport" unique_id=1670949023]
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="Container/TrackRoot/SubViewport/Node3D" unique_id=1510053537]
+transform = Transform3D(1, 0, 0, 0, 0.67147505, -0.7410272, 0, 0.7410272, 0.67147505, 0, -20, 4.2)
+fov = 71.9
+
+[node name="Container" type="Node3D" parent="Container/TrackRoot/SubViewport/Node3D" unique_id=980938854]
+metadata/_edit_lock_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1786873910]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -18, 0.01)
+layers = 16
+pixel_size = 0.1
+alpha_antialiasing_mode = 2
+texture = ExtResource("7_8cob2")
+region_enabled = true
+region_rect = Rect2(0, 0, 950.91394, 34.957184)
+metadata/_edit_lock_ = true
+
+[node name="Body" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=2000522581]
+texture = ExtResource("5_pjxwy")
+metadata/_edit_lock_ = true
+
+[node name="Divider1" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=921195329]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, -2.4, -20, 0.1)
+centered = false
+texture = ExtResource("9_8cob2")
+metadata/_edit_lock_ = true
+
+[node name="Divider2" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=537359617]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, -0.06, -20, 0.1)
+centered = false
+texture = ExtResource("9_8cob2")
+metadata/_edit_lock_ = true
+
+[node name="Divider3" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1330632433]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 1, 2.28, -20, 0.1)
+centered = false
+texture = ExtResource("9_8cob2")
+metadata/_edit_lock_ = true
+
+[node name="Effect1" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1300718199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, 0.1)
+flip_v = true
+modulate = Color(1, 1, 1, 0.4)
+texture = ExtResource("7_qo7lg")
+region_enabled = true
+region_rect = Rect2(0, 349.6861, 223.6336, 3490.314)
+script = ExtResource("8_c1nfr")
+
+[node name="Effect2" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1673852875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17, -0.5, 0.1)
+flip_v = true
+modulate = Color(1, 1, 1, 0.4)
+texture = ExtResource("7_qo7lg")
+region_enabled = true
+region_rect = Rect2(0, 319.55612, 223.6336, 3520.4438)
+script = ExtResource("8_c1nfr")
+
+[node name="Effect3" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1474069836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17, -0.5, 0.1)
+flip_v = true
+modulate = Color(1, 1, 1, 0.4)
+texture = ExtResource("7_qo7lg")
+region_enabled = true
+region_rect = Rect2(0, 319.55612, 223.6336, 3520.4438)
+script = ExtResource("8_c1nfr")
+
+[node name="Effect4" type="Sprite3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=496481232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.5, 0.1)
+flip_v = true
+modulate = Color(1, 1, 1, 0.4)
+texture = ExtResource("7_qo7lg")
+region_enabled = true
+region_rect = Rect2(0, 319.55612, 223.6336, 3520.4438)
+script = ExtResource("8_c1nfr")
+
+[node name="Notes" type="Node3D" parent="Container/TrackRoot/SubViewport/Node3D/Container" unique_id=1698520006]
+
+[node name="TextureRect" type="TextureRect" parent="Container/TrackRoot" unique_id=2105226051]
+z_index = 2
+texture_filter = 4
+clip_contents = true
+layout_mode = 0
+offset_top = 149.0
+offset_right = 1920.0
+offset_bottom = 1151.0
+
 [node name="BG" type="TextureRect" parent="Container" unique_id=321481700]
 layout_mode = 0
 offset_top = -42.0
@@ -418,3 +454,124 @@ offset_bottom = 139.0
 theme_override_fonts/font = ExtResource("16_dijif")
 theme_override_font_sizes/font_size = 80
 text = "00000000"
+
+[node name="Control" type="Control" parent="." unique_id=2044432346]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hit1" parent="Control" unique_id=993205906 instance=ExtResource("17_g6bku")]
+visible = false
+z_index = 5
+position = Vector2(360, 888)
+scale = Vector2(3, 3)
+animation = &"light"
+script = ExtResource("18_qo7lg")
+
+[node name="Hit2" parent="Control" unique_id=1747089263 instance=ExtResource("17_g6bku")]
+visible = false
+z_index = 5
+position = Vector2(750, 888)
+scale = Vector2(3, 3)
+animation = &"light"
+frame_progress = 0.39744172
+script = ExtResource("18_qo7lg")
+
+[node name="Hit3" parent="Control" unique_id=680926947 instance=ExtResource("17_g6bku")]
+visible = false
+z_index = 5
+position = Vector2(1160, 888)
+scale = Vector2(3, 3)
+animation = &"light"
+frame_progress = 0.39744172
+script = ExtResource("18_qo7lg")
+
+[node name="Hit4" parent="Control" unique_id=2068211155 instance=ExtResource("17_g6bku")]
+visible = false
+z_index = 5
+position = Vector2(1560, 888)
+scale = Vector2(3, 3)
+animation = &"light"
+frame_progress = 0.39744172
+script = ExtResource("18_qo7lg")
+
+[node name="Control2" type="Control" parent="." unique_id=1129516427]
+z_index = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Effect1" type="TextureRect" parent="Control2" unique_id=1893847854]
+z_index = 4
+layout_mode = 0
+offset_left = 270.0
+offset_top = 720.0
+offset_right = 384.0
+offset_bottom = 828.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_iqur7")
+script = ExtResource("20_cqr8i")
+
+[node name="Effect2" type="TextureRect" parent="Control2" unique_id=216339749]
+z_index = 4
+layout_mode = 0
+offset_left = 650.0
+offset_top = 720.0
+offset_right = 764.0
+offset_bottom = 828.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_iqur7")
+script = ExtResource("20_cqr8i")
+
+[node name="Effect3" type="TextureRect" parent="Control2" unique_id=1053673880]
+z_index = 4
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 720.0
+offset_right = 1144.0
+offset_bottom = 828.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_iqur7")
+script = ExtResource("20_cqr8i")
+
+[node name="Effect4" type="TextureRect" parent="Control2" unique_id=1900375210]
+z_index = 4
+layout_mode = 0
+offset_left = 1405.0
+offset_top = 720.0
+offset_right = 1519.0
+offset_bottom = 828.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_iqur7")
+script = ExtResource("20_cqr8i")
+
+[node name="TextureRect" type="TextureRect" parent="Control2" unique_id=659925704]
+visible = false
+z_index = 7
+layout_mode = 0
+offset_left = 1405.0
+offset_top = 720.0
+offset_right = 1519.0
+offset_bottom = 828.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_iqur7")
+
+[node name="SoundEffect" type="Control" parent="." unique_id=1474431478]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hit1" type="AudioStreamPlayer2D" parent="SoundEffect" unique_id=1720029966]
+stream = ExtResource("20_t265e")
+
+[node name="Hit2" type="AudioStreamPlayer2D" parent="SoundEffect" unique_id=279459496]
+stream = ExtResource("20_t265e")
+
+[node name="Hit3" type="AudioStreamPlayer2D" parent="SoundEffect" unique_id=695094618]
+stream = ExtResource("20_t265e")
+
+[node name="Hit4" type="AudioStreamPlayer2D" parent="SoundEffect" unique_id=1129201031]
+stream = ExtResource("20_t265e")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=228750686]
+stream = ExtResource("2_pjxwy")

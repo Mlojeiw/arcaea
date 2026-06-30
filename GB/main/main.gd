@@ -86,6 +86,10 @@ func song_select_start():
 		$SongSelect.reset()
 	$SongSelect.show_song_select()
 	song_select_music(null)
+func game_start():
+	#if $GamePlay.is_used:
+		#$GamePlay.reset()
+	$GamePlay.set_game()
 func level_menu_music():
 	$MusicPlayer.stop()
 	$MusicPlayer.stream = LEVEL_MENU_MUSIC
@@ -138,4 +142,6 @@ func signal_connect():
 	$SongSelect/CharSelect/RightArrow.pressed.connect(item_click_music)
 	$SongSelect/CharSelect/PartnerArtSwap.pressed.connect(item_click_music)
 	$SongSelect/Top/DifficultyControl._on_button_pressed.connect(item_click_music)
+	for x:SongCard in $SongSelect/SongList/Panel/ScrollContainer/Control.get_children():
+		x.inGame.connect(switch_to.bind($GamePlay))
 	UserData.song_switch.connect(song_select_music)

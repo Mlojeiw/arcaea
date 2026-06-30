@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://db3dophj7d7m5"]
+
+[ext_resource type="Texture2D" uid="uid://bvbam7yy877l4" path="res://picture/game/note/note_hold_dark.png" id="1_dxv0d"]
+[ext_resource type="Script" uid="uid://bd7kuxoc4fojc" path="res://GB/game_play/note/note_play.gd" id="2_3qfau"]
+
+[node name="Sprite3D" type="Sprite3D" unique_id=1970704265]
+transform = Transform3D(0.7, 0, 0, 0, 2, 0, 0, 0, 0.7, 0, 0, 0)
+texture = ExtResource("1_dxv0d")
+script = ExtResource("2_3qfau")

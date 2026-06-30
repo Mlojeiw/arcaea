@@ -16,7 +16,6 @@ var jacket = {
 }
 var is_used = false
 var songcard: Array[SongCard]
-signal set_finished
 func _ready() -> void:	
 	signal_connect()
 	songlist.setup()
@@ -41,7 +40,6 @@ func setup():
 		if x.id == UserData.song_id:
 			set_grade(x.s)
 			set_infom(x.s)
-			
 			songicon.texture = x.icon
 			$SongContainer.texture_normal = jacket[x.color]
 			if not UserData.difficulty in x.difficulty:
@@ -69,7 +67,7 @@ func set_grade(song):
 func set_score(song):
 	if UserData.difficulty in song.difficulty:
 		var chart = song.diff_chart[UserData.difficulty] as ChartData
-		score.text = chart.score
+		score.text = format_score(chart.score)
 	else:
 		score.text = null
 func set_infom(song:Song):
@@ -96,6 +94,7 @@ func _on_diff_switch():
 	set_score(UserData.song_list[UserData.song_id])
 	set_grade(UserData.song_list[UserData.song_id])
 func _on_background_switch():
+	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	if songcard[UserData.song_id].color == "Dark":
@@ -104,6 +103,9 @@ func _on_background_switch():
 	if songcard[UserData.song_id].color == "Light":
 		tween.tween_property($BG/Light,"modulate",Color(1,1,1,1),0.2)
 		tween.tween_property($BG/Dark,"modulate",Color(1,1,1,0),0.2)
+func format_score(score: int) -> String:
+	var s = str(score).lpad(8, "0")
+	return s.substr(0, 2) + "'" + s.substr(2, 3) + "'" + s.substr(5, 2)
 func signal_connect():
 	charselect.exit.connect(_on_exit_pressed)
 	songlist.set_finished.connect(setup)

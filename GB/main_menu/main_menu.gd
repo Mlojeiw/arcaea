@@ -14,7 +14,6 @@ var background_tween : Tween
 var is_used = false
 var is_anim = false
 signal music_start
-signal set_finished
 func _ready() -> void:
 	singal_connect()
 	setup()

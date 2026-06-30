@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bcdowtw7aqpbi"]
+
+[ext_resource type="SpriteFrames" uid="uid://c1872uyj4mmjb" path="res://GB/game_play/effect/hit_effect.tres" id="1_ueo16"]
+
+[node name="Hit" type="AnimatedSprite2D" unique_id=993205906]
+sprite_frames = ExtResource("1_ueo16")
+animation = &"conflict"

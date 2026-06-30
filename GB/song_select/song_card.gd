@@ -1,20 +1,4 @@
 class_name SongCard extends Control
-@onready var songicon = $Body/Container/SongIcon
-@onready var body = $Body
-@onready var select = $WasSelect
-@onready var corner1 = $Corner/Corner1
-@onready var corner2 = $Corner/Corner2
-@onready var corner_diff = $Corner/Corner1/diff
-@onready var bg = $Body/Container/BG
-@onready var start = $Body/Start
-@onready var song_name = $Body/Container/Label
-@onready var anim = $AnimationPlayer
-@onready var bg_grade = $bg/Rank1
-@onready var bg_clear_type = $bg/Rank2
-#@onready var effect = $Body/TextureButton
-var was_selected: bool = false
-var tween:Tween
-var id: int
 var diff_number: Dictionary = {
 }
 var difficulty: Array[String] = []
@@ -55,10 +39,26 @@ var clear_type = {
 	
 	"pure":load("res://picture/clear_type/pure.png"),
 }
+@onready var songicon = $Body/Container/SongIcon
+@onready var body = $Body
+@onready var select = $WasSelect
+@onready var corner1 = $Corner/Corner1
+@onready var corner2 = $Corner/Corner2
+@onready var corner_diff = $Corner/Corner1/diff
+@onready var bg = $Body/Container/BG
+@onready var start = $Body/Start
+@onready var song_name = $Body/Container/Label
+@onready var anim = $AnimationPlayer
+@onready var bg_grade = $bg/Rank1
+@onready var bg_clear_type = $bg/Rank2
+var was_selected: bool = false
+var tween:Tween
+var id: int
 var icon
 var init_pos 
 var color:String
 var s:Song
+signal inGame(song:Song)
 func _ready() -> void:
 	signal_connect()
 func setup(song: Song):
@@ -92,6 +92,9 @@ func setup(song: Song):
 		self.visible = true
 		corner_diff.text = diff_number[UserData.difficulty]
 func _on_body_pressed() -> void:
+	if was_selected:
+		inGame.emit()
+		return
 	UserData.set_song_id(id)
 func _on_song_switch(song:Song):
 	if UserData.song_id == id:

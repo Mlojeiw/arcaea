@@ -2,7 +2,7 @@ extends Control
 @onready var Otexture = $Otexture as SubViewport
 @onready var viewport := $SubViewport as SubViewport
 @onready var track_sprite := $SubViewport/Node3D/Container/Body as Sprite3D
-@onready var display := $TextureRect as TextureRect
+@onready var display = $TextureRect as TextureRect
 @export var scroll_speed: float = 0.6
 var track_material: StandardMaterial3D 
 var track = {
